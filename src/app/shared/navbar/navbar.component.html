@@ -1,4 +1,4 @@
-<nav class="navbar flex justify-between h-full poppins-medium px-5">
+<nav class="navbar flex justify-between h-full poppins-medium px-5 py-2">
   <div class="logo flex items-center">
     <a routerLink="sistema/dashboard" class="text-2xl font-bold">
       <h1 class="text-4xl poppins-extrabold mb-1">
@@ -7,19 +7,61 @@
     </a>
   </div>
   <div class="flex justify-center h-full">
-    <ul class="flex gap-6 py-5 text-lg">
-      <li>
-        <a routerLink="sistema/contacto">
-          <img src="estudiantes.svg" alt="estudiantes">
+    <ul class="flex py-5 text-lg gap-10">
+      <li class="relative group flex flex-col items-center cursor-pointer">
+        <a routerLink="home" routerLinkActive="border-b-8 border-red-500" >
+          <img src="home.svg" alt="home" class="h-8" />
         </a>
+        <span
+          class="absolute top-10 scale-0 group-hover:scale-100 bg-violet-700 text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap"
+        >
+          Inicio
+        </span>
       </li>
-      <li>
-        <a routerLink="sistema/cursos">
-          <img src="cursos.svg" alt="cursos">
+      <li class="relative group flex flex-col items-center cursor-pointer">
+        <a routerLink="students" routerLinkActive="border-b-8 border-red-500" >
+          <img src="estudiantes.svg" alt="estudiantes" class="h-8" />
         </a>
+        <span
+          class="absolute top-10 scale-0 group-hover:scale-100 bg-violet-700 text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap"
+        >
+          Estudiantes
+        </span>
       </li>
-      <li><a routerLink="sistema/instructores">instructores</a></li>
+      <li class="relative group flex flex-col items-center cursor-pointer">
+        <a routerLink="courses"  routerLinkActive="border-b-8 border-red-500">
+          <img src="cursos.svg" alt="cursos" class="h-8" />
+        </a>
+        <span
+          class="absolute top-10 scale-0 group-hover:scale-100 bg-violet-700 text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap"
+        >
+          Cursos
+        </span>
+      </li>
+      <li class="relative group flex flex-col items-center cursor-pointer">
+        <a routerLink="users"  routerLinkActive="border-b-8 border-red-500">
+          <img src="usuarios.svg" alt="usuarios" class="h-8" />
+        </a>
+        <span
+          class="absolute top-10 scale-0 group-hover:scale-100 bg-violet-700 text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap"
+        >
+          Usuarios
+        </span>
+      </li>
+      <li class="relative group flex flex-col items-center cursor-pointer">
+        <a>
+          <img src="permisos.svg" alt="permisos" class="h-8" />
+        </a>
+        <span
+          class="absolute top-10 scale-0 group-hover:scale-100 bg-violet-700 text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap"
+        >
+          permisos
+        </span>
+      </li>
     </ul>
   </div>
-  <div class="perfil"></div>
+  <div class="perfil flex flex-col items-center justify-center">
+    <img src="favicon.ico" alt="" />
+    <h1 class="poppins-medium">Tatiana Guzman</h1>
+  </div>
 </nav>

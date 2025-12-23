@@ -111,13 +111,18 @@
   font-weight: 900;
   font-style: italic;
 }
-.fondo-gradiente {
+.fondo-gradiente2{
  background-image: linear-gradient(to bottom, #d7ffcb, #c4fcb5, #b0f99f, #9af689, #81f372, #75f266, #68f159, #5af04b, #5bf246, #5cf341, #5df53b, #5ef634);
+}
+.fondo-gradiente{
+  background-image: linear-gradient(to bottom, #ffffff, #dadada, #b7b7b7, #959595, #747474);
+
 }
 .titulo-404{
     font-size: 20rem;
     text-shadow: rgba(117, 117, 117, 0.466) 40px -40px;
 }
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
