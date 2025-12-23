@@ -13,8 +13,8 @@ export class AuthService {
 
   constructor( private http: HttpClient) { }
 
-login( usuario :  string ,  password : string) :  Observable<Login>{
-  return this.http.post<Login>(`${api}/auth/login`, { usuario, password }).pipe(
+login( cedula :  string ,  password : string) :  Observable<Login>{
+  return this.http.post<Login>(`${api}auth/login`, { cedula, password }).pipe(
     // capturamos errores
     catchError(this.handleError)
   );
@@ -34,8 +34,7 @@ login( usuario :  string ,  password : string) :  Observable<Login>{
         } else if (error.error?.message) {
             errorMessage = error.error.message;
         }
-
-        return throwError(() => errorMessage);
+       return throwError(() => new Error(errorMessage));
     }
 
 
