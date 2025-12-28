@@ -19,7 +19,7 @@ export class NavbarComponent {
   }
 logout() {
     // Lógica de cierre de sesión aquí
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
     console.log('Cerrando sesión...');
   }
 

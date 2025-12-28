@@ -11,6 +11,10 @@ export const AuthRoutes : Routes= [
     loadComponent: () => import('../pages/not-found/not-found.component').then(m => m.NotFoundComponent),
   },
   {
+    path: 'Auth/ver-perfil',
+    loadComponent : () => import('../pages/perfil-usuario/perfil-usuario.component').then(m => m.PerfilUsuarioComponent)
+  },
+  {
     path: '',
     redirectTo: 'Auth/login',
     pathMatch: 'full',
