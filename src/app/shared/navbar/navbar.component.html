@@ -9,7 +9,7 @@
   <div class="flex justify-center h-full">
     <ul class="flex py-5 text-lg gap-10">
       <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="home" routerLinkActive="border-b-8 border-red-500" >
+        <a routerLink="home" routerLinkActive="border-b-8 border-red-500">
           <img src="home.svg" alt="home" class="h-8" />
         </a>
         <span
@@ -19,7 +19,7 @@
         </span>
       </li>
       <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="students" routerLinkActive="border-b-8 border-red-500" >
+        <a routerLink="students" routerLinkActive="border-b-8 border-red-500">
           <img src="estudiantes.svg" alt="estudiantes" class="h-8" />
         </a>
         <span
@@ -29,7 +29,7 @@
         </span>
       </li>
       <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="courses"  routerLinkActive="border-b-8 border-red-500">
+        <a routerLink="courses" routerLinkActive="border-b-8 border-red-500">
           <img src="cursos.svg" alt="cursos" class="h-8" />
         </a>
         <span
@@ -39,7 +39,7 @@
         </span>
       </li>
       <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="users"  routerLinkActive="border-b-8 border-red-500">
+        <a routerLink="users" routerLinkActive="border-b-8 border-red-500">
           <img src="usuarios.svg" alt="usuarios" class="h-8" />
         </a>
         <span
@@ -60,8 +60,47 @@
       </li>
     </ul>
   </div>
-  <div class="perfil flex flex-col items-center justify-center">
-    <img src="favicon.ico" alt="" />
-    <h1 class="poppins-medium">Tatiana Guzman</h1>
+  <div class="relative flex items-center">
+    <button
+      (click)="toggleDropdown('headerUser')"
+      class="flex items-center space-x-2 focus:outline-none"
+    >
+      <div class="text-center">
+        <div class="text-sm font-semibold text-gray-800">Nombre Usuario</div>
+        <div class="text-xs text-gray-600">Administrador</div>
+      </div>
+      <mat-icon
+        [class.rotate-180]="dropdowns['headerUser']"
+        class="transition-transform duration-300 hover:bg-white rounded-full"
+      >
+        expand_more
+      </mat-icon>
+    </button>
+    <!-- Dropdown menu -->
+    <div
+      class="absolute right-0 top-full mt-3 w-48 bg-white rounded-lg shadow-lg py-2 z-50"
+      [class.hidden]="!dropdowns['headerUser']"
+    >
+      <a
+        class="flex items-center px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
+      >
+        <mat-icon class="mr-3 text-gray-600">account_circle</mat-icon>
+        Mi Perfil
+      </a>
+      <a
+        class="flex items-center px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
+      >
+        <mat-icon class="mr-3 text-gray-600">settings</mat-icon>
+        Configuración
+      </a>
+      <div class="border-t my-1"></div>
+      <a
+        (click)="logout()"
+        class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer"
+      >
+        <mat-icon class="mr-3">logout</mat-icon>
+        Cerrar Sesión
+      </a>
+    </div>
   </div>
 </nav>
