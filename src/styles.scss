@@ -3,7 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
+.baseColor{
+  background: #5d08cc;
+}
 .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
