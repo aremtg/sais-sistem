@@ -1,10 +1,25 @@
 <div class="w-full bg-white p-6 rounded-lg shadow space-y-8">
-  <div class="flex justify-between items-center ">
-    <span class="text-2xl poppins-semibold">modulo de estudiante</span>
-    <p class="text-gray-300">modulo de registro y control de estudiantes</p>
-    <button class="border rounded p-2 m-2" matTooltip="registrar alumno" matTooltipClass="mat-tooltip">registrar
-      alumno</button>
+  <div class="w-full bg-white p-6 rounded-xl shadow space-y-6">
+
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div>
+      <h1 class="text-2xl font-semibold text-gray-800">
+        Módulo de Estudiantes
+      </h1>
+      <p class="text-sm text-gray-500">
+        Registro, consulta y control académico de estudiantes
+      </p>
+    </div>
+
+    <button
+      class="inline-flex items-center gap-2 rounded-md bg-purple-700 px-4 py-2
+             text-sm font-medium text-white hover:bg-purple-800 transition"
+      matTooltip="Registrar nuevo estudiante">
+      + Registrar estudiante
+    </button>
   </div>
+
   <div class="w-full bg-gray-100 rounded-lg p-4 shadow-sm">
     <div class="flex flex-col gap-4 md:flex-row md:items-end">
       <!-- Buscador -->
@@ -56,27 +71,44 @@
     </div>
   </div>
 
-  <table class="border-collapse border border-gray-300 w-full text-center">
-    <thead class="bg-gray-200">
-      <tr>
-        <th class="border border-gray-300">Items</th>
-        <th class="border border-gray-300 p-2">Nombre Completo</th>
-        <th class="border border-gray-300 p-2">cedula</th>
-        <th class="border border-gray-300 p-2">email</th>
-        <th class="border border-gray-300 p-2">curso</th>
-        <th class="border border-gray-300 p-2">profesor</th>
-        <th class="border border-gray-300 p-2">nombre</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="border border-gray-300 p-2">nombre</td>
-        <td class="border border-gray-300 p-2">nombre</td>
-        <td class="border border-gray-300 p-2">nombre</td>
-        <td class="border border-gray-300 p-2">nombre</td>
-        <td class="border border-gray-300 p-2">nombre</td>
-        <td class="border border-gray-300 p-2">nombre</td>
-      </tr>
-    </tbody>
-  </table>
+    <!-- Tabla -->
+  <div class="overflow-x-auto">
+    <table class="w-full border border-gray-200 text-sm text-left">
+      <thead class="bg-gray-100 text-gray-700">
+        <tr>
+          <th class="p-3">#</th>
+          <th class="p-3">Nombre</th>
+          <th class="p-3">Cédula</th>
+          <th class="p-3">Email</th>
+          <th class="p-3">Curso</th>
+          <th class="p-3">Profesor</th>
+          <th class="p-3 text-center">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="border-t hover:bg-gray-50">
+          <td class="p-3">1</td>
+          <td class="p-3">Juan Pérez</td>
+          <td class="p-3">0102030405</td>
+          <td class="p-3">juanemail.com</td>
+          <td class="p-3">Curso 1</td>
+          <td class="p-3">Ana Gómez</td>
+
+          <td class="p-3 flex justify-center gap-4 ">
+            <button matTooltip="Ver" class="text-purple-800 hover:underline">
+              Ver
+            </button>
+            <button matTooltip="Editar" class="text-yellow-700 hover:underline">
+              Editar
+            </button>
+            <button matTooltip="Eliminar" class="text-red-700 hover:underline">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
