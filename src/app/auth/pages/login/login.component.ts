@@ -17,35 +17,35 @@ fromlogin! : FormGroup;
      private snackbar: MatSnackBar ,
      private fb :  FormBuilder ,
     private router: Router) {
-    // this.fromlogin = this.fb.group({
-    //   cedula : ['' , [Validators.required]],
-    //   password : ['' , [Validators.required]]
-    // });
+    this.fromlogin = this.fb.group({
+      cedula : ['' , [Validators.required]],
+      password : ['' , [Validators.required]]
+    });
    }
 
    login(){
-    // if (this.fromlogin.invalid) {
-    //   this.snackbar.open('Por favor complete todos los campos', 'Close', { duration: 3000 });
-    //   return;
-    // }
-    // const { cedula , password} = this.fromlogin.value;
-    // this.authService.login( cedula , password).subscribe({
-    //   next: (resp :  Login) => {
-    //     if (resp && resp.usuario && resp.token.token) {
-    //       sessionStorage.setItem('token', resp.token.token);
-    //       sessionStorage.setItem('role', resp.usuario.role);
-    //       sessionStorage.setItem('usuario', resp.usuario.cedula);
-    //       sessionStorage.setItem('refreshToken', resp.token.refreshToken);
-    //       sessionStorage.setItem('imagen', resp.usuario.imagen ? resp.usuario.imagen : 'no hay imagen');
-    //       sessionStorage.setItem(`nombrecompleto`,`${resp.usuario.nombre} ${resp.usuario.apellido}`);
-    //       this.snackbar.open( resp.message, 'Close', { duration: 3000 });
+    if (this.fromlogin.invalid) {
+      this.snackbar.open('Por favor complete todos los campos', 'Close', { duration: 3000 });
+      return;
+    }
+    const { cedula , password} = this.fromlogin.value;
+    this.authService.login( cedula , password).subscribe({
+      next: (resp :  Login) => {
+        if (resp && resp.usuario && resp.token.token) {
+          sessionStorage.setItem('token', resp.token.token);
+          sessionStorage.setItem('role', resp.usuario.role);
+          sessionStorage.setItem('usuario', resp.usuario.cedula);
+          sessionStorage.setItem('refreshToken', resp.token.refreshToken);
+          sessionStorage.setItem('imagen', resp.usuario.imagen ? resp.usuario.imagen : 'no hay imagen');
+          sessionStorage.setItem(`nombrecompleto`,`${resp.usuario.nombre} ${resp.usuario.apellido}`);
+          this.snackbar.open( resp.message, 'Close', { duration: 3000 });
           this.router.navigate(['sistema/dashboard']);
-    //     }
-    //   },
-    //   error: (err) => {
-    //     this.snackbar.open(err.message,'Close', { duration: 3000 });
-    //   }
-    // });
+        }
+      },
+      error: (err) => {
+        this.snackbar.open(err.message,'Close', { duration: 3000 });
+      }
+    });
    }
 
 }
