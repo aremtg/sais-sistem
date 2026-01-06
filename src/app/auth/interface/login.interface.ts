@@ -39,3 +39,19 @@ export interface tablasfitros{
   email?:     string;
   role ? :  string;
 }
+// -------registrar usuaarios----------------------
+export interface Register {
+  message: string;
+  usuario: Usuario;
+}
+
+export interface Usuario {
+  cedula:   string;
+  nombre:   string;
+  apellido: string;
+  email:    string;
+  imagen:   null;
+  role:     string;
+  isActive: boolean;
+}
+// ------------------------------

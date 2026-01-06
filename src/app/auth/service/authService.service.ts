@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { environment } from '../../../enviroments/api-local';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Login, Tablas, tablasfitros } from '../interface/login.interface';
+import { Login, Register, Tablas, tablasfitros, Usuario } from '../interface/login.interface';
 import { __values } from 'tslib';
 
 
@@ -20,6 +20,7 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+  // filtros de busqueda
   getfilter(filtros: tablasfitros) {
     let params = new HttpParams();
     Object.entries(filtros).forEach(([key, values]) => {
@@ -29,6 +30,12 @@ export class AuthService {
       }
     });
     return this.http.get<Tablas>(`${api}auth/filter`, { params : params }).pipe(
+      catchError(this.handleError)
+    )
+  }
+  // registro de usuario
+  registerUser( register : Register) : Observable<Register>{
+    return this.http.post<Register>(`${api}auth/register` , { register}).pipe(
       catchError(this.handleError)
     )
   }

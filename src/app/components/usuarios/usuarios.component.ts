@@ -3,10 +3,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { tablasfitros, Usuario } from '../../auth/interface/login.interface';
 import { AuthService } from '../../auth/service/authService.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, of } from 'rxjs';
 import { Roles } from './enum/rol.enum';
+import {MatDialog} from '@angular/material/dialog';
+import { RegistroUsersComponent } from './registro-users/registro-users.component';
 @Component({
   selector: 'app-usuarios',
   standalone: true,
@@ -15,12 +17,17 @@ templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
 })
 export class UsuariosComponent implements OnInit{
-
   usuarios : Usuario[] = [];
   filtro : string = '';
   filtroRol : string = '';
   role = Object.values(Roles)
-  constructor(private authService : AuthService , private snackbar : MatSnackBar){}
+  register! : FormGroup;
+  constructor(
+      private fb: FormBuilder,
+      private authService : AuthService ,
+      private snackbar : MatSnackBar ,
+      private dialog : MatDialog
+    ){}
   ngOnInit(): void {
    this.buscar()
   }
@@ -65,5 +72,16 @@ export class UsuariosComponent implements OnInit{
   aplicarroles(){
     this.buscar();
   }
-
+registrar(){
+  const dialogRef =  this.dialog.open(RegistroUsersComponent,{
+    width:'400px',
+    disableClose : true
+  });
+  dialogRef.afterClosed().subscribe((resultado)=> {
+    if (resultado) {
+      this.snackbar.open(resultado.message, 'Cerrar',{duration : 3000});
+    }
+    this.buscar();
+  })
+}
 }
