@@ -44,7 +44,6 @@ export interface Register {
   message: string;
   usuario: Usuario;
 }
-
 export interface Usuario {
   cedula:   string;
   nombre:   string;
