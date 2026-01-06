@@ -8,7 +8,7 @@ export interface Token {
   token:        string;
   refreshToken: string;
 }
-
+// ------------------------------------
 export interface Usuario {
   cedula:   string;
   nombre:   string;
@@ -17,4 +17,25 @@ export interface Usuario {
   imagen:   null;
   role:     string;
   isActive: boolean;
+}
+// las tablas de usuarios --------------------------------
+export interface Tablas {
+  message:  string;
+  usuarios: Usuario[];
+}
+
+export interface Usuario {
+  id:        string;
+  cedula:    string;
+  nombre:    string;
+  email:     string;
+  role:      string;
+  isActive:  boolean;
+  createdAt: Date;
+}
+// ------------------------------------------------------------
+export interface tablasfitros{
+  cedula?:    string;
+  email?:     string;
+  role ? :  string;
 }
