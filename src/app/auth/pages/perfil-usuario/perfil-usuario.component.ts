@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CommonModule} from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CloudinaryModule} from '@cloudinary/ng';
 import { Cloudinary , CloudinaryImage } from '@cloudinary/url-gen';
 import { AuthService } from '../../service/authService.service';
@@ -24,7 +24,7 @@ export class PerfilUsuarioComponent implements OnInit {
   imagen = '';
   usuario = '';
   selectFile : File | null = null;
-  usuarios : Usuario[] = []
+  usuarios: Usuario | null = null;
   constructor( private authlogin : AuthService ,
     private readonly snakbar : MatSnackBar ,
     private readonly fb : FormBuilder,
@@ -40,6 +40,7 @@ export class PerfilUsuarioComponent implements OnInit {
       this.imagen = local.getItem('imagen') || '';
       this.usuario = local.getItem('usuario') || '';
     }
+
   }
 onFileSelected(event: Event) {
   const input = event.target as HTMLInputElement;
