@@ -40,11 +40,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         return loginService.refreshToken(refreshToken).pipe(
           switchMap((res: Login) => {
             if (typeof window !== 'undefined' && window.sessionStorage) {
-              sessionStorage.setItem('token', res.usuario.token);
+              sessionStorage.setItem('token', res.token.token);
             }
             const newreq = req.clone({
               setHeaders: {
-                Authorization: `Bearer ${res.usuario.token}`
+                Authorization: `Bearer ${res.token.refreshToken}`
               }
             });
             return next(newreq);

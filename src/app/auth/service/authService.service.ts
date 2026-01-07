@@ -70,8 +70,8 @@ export class AuthService {
     )
 
   }
-  refreshToken(refreshToken : string): Observable<Token>{
-    return this.http.post<Token>(`${api}auth/refresh` , {refreshToken}).pipe(
+  refreshToken(refreshToken : string): Observable<Login>{
+    return this.http.post<Login>(`${api}auth/refresh` , {refreshToken}).pipe(
       catchError(this.handleError)
     )
   }
