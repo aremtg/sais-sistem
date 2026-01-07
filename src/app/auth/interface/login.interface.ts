@@ -53,4 +53,4 @@ export interface Usuario {
   role:     string;
   isActive: boolean;
 }
-// ------------------------------
+

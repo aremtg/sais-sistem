@@ -31,7 +31,6 @@ export class PerfilUsuarioComponent implements OnInit {
     private readonly fb : FormBuilder,
   ){}
 
-  editdata(){}
   ngOnInit(): void {
     const local =  window.sessionStorage || window.localStorage;
     const token = local.getItem('token');
@@ -43,10 +42,12 @@ export class PerfilUsuarioComponent implements OnInit {
     }
     this.authlogin.profile().subscribe({
       next : (data)=> {
-        this.usuarios = data
+        this.usuarios = data;
+        this.error = null;
       },
       error: (err) => {
         this.error = err.message;
+        this.usuarios =  null;
       },
     })
   }
