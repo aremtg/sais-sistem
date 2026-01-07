@@ -56,12 +56,6 @@ export class AuthService {
       catchError(this.handleError)
     )
   }
-  // actualizar el usuario
-  // updateuser( id : string , data : Usuario) : Observable<Usuario>{
-  //   return this.http.patch<Usuario>(`${api}auth/${id}`, data).pipe(
-  //     catchError(this.handleError)
-  //   )
-  // }
   // actualizar la imagen y demas data del usuario
   updateUserImage(id: string, image: File): Observable<any> {
     const formData = new FormData();
@@ -70,6 +64,18 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+  profile() : Observable<Usuario>{
+    return this.http.get<Usuario>(`${api}auth/profile`).pipe(
+      catchError(this.handleError)
+    )
+
+  }
+  refreshToken(refreshToken : string): Observable<Token>{
+    return this.http.post<Token>(`${api}auth/refresh` , {refreshToken}).pipe(
+      catchError(this.handleError)
+    )
+  }
+
 
   // manejo de errores
   private handleError(error: HttpErrorResponse) {

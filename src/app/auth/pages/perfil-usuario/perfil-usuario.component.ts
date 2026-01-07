@@ -25,6 +25,7 @@ export class PerfilUsuarioComponent implements OnInit {
   usuario = '';
   selectFile : File | null = null;
   usuarios: Usuario | null = null;
+  error :  string |null = null;
   constructor( private authlogin : AuthService ,
     private readonly snakbar : MatSnackBar ,
     private readonly fb : FormBuilder,
@@ -40,7 +41,14 @@ export class PerfilUsuarioComponent implements OnInit {
       this.imagen = local.getItem('imagen') || '';
       this.usuario = local.getItem('usuario') || '';
     }
-
+    this.authlogin.profile().subscribe({
+      next : (data)=> {
+        this.usuarios = data
+      },
+      error: (err) => {
+        this.error = err.message;
+      },
+    })
   }
 onFileSelected(event: Event) {
   const input = event.target as HTMLInputElement;
