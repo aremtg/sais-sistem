@@ -50,9 +50,7 @@ export class UsuariosComponent implements OnInit {
     this.authService.getfilter(busqueda)
         .pipe(
           catchError((error) => {
-            this.snackbar.open(error.message, 'Cerrar', {
-              duration: 3000,
-            });
+            this.snackbar.open(error.message, 'Cerrar', { duration: 3000});
             return of({ usuarios: [] });
           })
         )
