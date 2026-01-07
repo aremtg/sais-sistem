@@ -64,8 +64,8 @@
   <div class="relative flex items-center poppins-medium ">
     <button (click)="toggleDropdown('headerUser')" class="flex items-center space-x-2 focus:outline-none">
       <div class="text-center">
-        <div class="text-sm  text-gray-800">Nombre Usuario</div>
-        <div class="text-xs text-gray-600">Administrador</div>
+        <div class="text-sm  text-gray-800">{{username}}</div>
+        <div class="text-xs text-gray-600">{{rolesusername}}</div>
       </div>
       <mat-icon [class.rotate-180]="dropdowns['headerUser']"
         class="transition-transform duration-300 hover:bg-white rounded-full">

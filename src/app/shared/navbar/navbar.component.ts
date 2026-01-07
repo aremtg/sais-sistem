@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon'
 @Component({
@@ -10,9 +10,21 @@ import {MatIconModule} from '@angular/material/icon'
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {
-  constructor(private router: Router) {}
+export class NavbarComponent implements OnInit {
+
   isProfileOpen = false;
+  username = '';
+  rolesusername = '';
+
+  constructor(private router: Router) {}
+  ngOnInit(): void {
+    const local =  window.sessionStorage || window.localStorage;
+    const token = local.getItem('token');
+    if (token) {
+        this.username  =  local.getItem('usuario')|| 'no hay token',
+        this.rolesusername = local.getItem('role')|| 'no hay token'
+    }
+  }
 
   toggleProfile() {
     this.isProfileOpen = !this.isProfileOpen;
@@ -20,7 +32,8 @@ export class NavbarComponent {
 logout() {
     // Lógica de cierre de sesión aquí
     this.router.navigate(['/']);
-    console.log('Cerrando sesión...');
+    
+
   }
 
    dropdowns: { [key: string]: boolean } = {

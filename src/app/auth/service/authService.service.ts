@@ -62,7 +62,7 @@ export class AuthService {
   //     catchError(this.handleError)
   //   )
   // }
-  // subir una imagen actualiazar solo la imagen
+  // actualizar la imagen y demas data del usuario
   updateUserImage(id: string, image: File): Observable<any> {
     const formData = new FormData();
     formData.append('imagen', image);

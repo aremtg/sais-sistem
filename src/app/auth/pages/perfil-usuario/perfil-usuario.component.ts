@@ -42,16 +42,15 @@ onFileSelected(event: Event) {
   const input = event.target as HTMLInputElement;
   const file = input.files?.[0];
   if (!file) return;
-
   // Validaciones recomendadas
-  // if (!file.type.startsWith('image/')) {
-  //   this.snakbar.open('Solo se permiten imágenes', 'Cerrar', { duration: 3000 });
-  //   return;
-  // }
-  // if (file.size > 2 * 1024 * 1024) {
-  //   this.snakbar.open('La imagen no debe superar 2MB', 'Cerrar', { duration: 3000 });
-  //   return;
-  // }
+  if (!file.type.startsWith('image/')) {
+    this.snakbar.open('Solo se permiten imágenes', 'Cerrar', { duration: 3000 });
+    return;
+  }
+  if (file.size > 2 * 1024 * 1024) {
+    this.snakbar.open('La imagen no debe superar 2MB', 'Cerrar', { duration: 3000 });
+    return;
+  }
   const userId = this.authlogin.userId();
   if (!userId) {
     this.snakbar.open('No se puede obtener el ID del usuario', 'Cerrar', { duration: 3000 });
