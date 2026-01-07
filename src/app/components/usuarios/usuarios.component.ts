@@ -26,7 +26,7 @@ export class UsuariosComponent implements OnInit {
     private authService: AuthService,
     private snackbar: MatSnackBar,
     private dialog: MatDialog
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.buscar()
   }
@@ -48,16 +48,16 @@ export class UsuariosComponent implements OnInit {
       busqueda.role = this.filtroRol.toLocaleUpperCase();
     }
     this.authService.getfilter(busqueda)
-        .pipe(
-          catchError((error) => {
-            this.snackbar.open(error.message, 'Cerrar', { duration: 3000});
-            return of({ usuarios: [] });
-          })
-        )
-        .subscribe((resp) => {
-          this.usuarios = resp.usuarios || [];
-        }
-        );
+      .pipe(
+        catchError((error) => {
+          this.snackbar.open(error.message, 'Cerrar', { duration: 3000 });
+          return of({ usuarios: [] });
+        })
+      )
+      .subscribe((resp) => {
+        this.usuarios = resp.usuarios || [];
+      }
+      );
 
   }
   limpiarfiltros() {
