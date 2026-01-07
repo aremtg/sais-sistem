@@ -20,6 +20,7 @@ export class UsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
   filtro: string = '';
   filtroRol: string = '';
+  Active :  string[] = ['ACTIVO' , 'INACTIVO']
   role = Object.values(Roles)
   register!: FormGroup;
   constructor(
@@ -35,6 +36,7 @@ export class UsuariosComponent implements OnInit {
       email: '',
       cedula: '',
       role: '',
+      
     };
     if (this.filtro && this.filtro.trim() !== '') {
       const terminolimpio = this.filtro.trim().toLowerCase();
@@ -47,10 +49,13 @@ export class UsuariosComponent implements OnInit {
     if (this.filtroRol && this.filtroRol.trim() !== '') {
       busqueda.role = this.filtroRol.toLocaleUpperCase();
     }
+    if (this.filtroRol && this.filtroRol.trim() !== '') {
+      busqueda.role = this.filtroRol.toLocaleUpperCase();
+    }
     this.authService.getfilter(busqueda)
       .pipe(
         catchError((error) => {
-          this.snackbar.open(error.message, 'Cerrar', { duration: 3000 });
+          this.snackbar.open(error.message, 'Cerrar', { duration: 1000 });
           return of({ usuarios: [] });
         })
       )
@@ -63,6 +68,7 @@ export class UsuariosComponent implements OnInit {
   limpiarfiltros() {
     this.filtro = '';
     this.filtroRol = '';
+    this.Active = [''];
     this.buscar()
     // this.cargrusuarios();
   }
