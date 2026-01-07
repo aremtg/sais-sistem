@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CommonModule} from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CloudinaryModule} from '@cloudinary/ng';
 import { Cloudinary , CloudinaryImage } from '@cloudinary/url-gen';
 import { AuthService } from '../../service/authService.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Usuario } from '../../interface/login.interface';
 @Component({
   selector: 'app-perfil-usuario',
   standalone: true,
@@ -22,13 +23,15 @@ export class PerfilUsuarioComponent implements OnInit {
   role = '';
   imagen = '';
   usuario = '';
-  selectFile : File | null = null
-
+  selectFile : File | null = null;
+  usuarios : Usuario[] = []
   constructor( private authlogin : AuthService ,
-    private readonly snakbar : MatSnackBar
+    private readonly snakbar : MatSnackBar ,
+    private readonly fb : FormBuilder,
   ){}
-  ngOnInit(): void {
 
+  editdata(){}
+  ngOnInit(): void {
     const local =  window.sessionStorage || window.localStorage;
     const token = local.getItem('token');
     if (token) {

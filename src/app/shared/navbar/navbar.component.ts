@@ -32,16 +32,10 @@ export class NavbarComponent implements OnInit {
 logout() {
     // Lógica de cierre de sesión aquí
     this.router.navigate(['/']);
-    
-
   }
-
    dropdowns: { [key: string]: boolean } = {
     usuarios: false,
     headersuser:false
-    // puedes agregar más dropdowns aquí
-
-
   };
 
   @HostListener('document:click', ['$event'])
