@@ -54,8 +54,7 @@ export class UsuariosComponent implements OnInit{
           duration: 3000,
         });
         return of({ usuarios: []});
-
-      })
+           })
     )
     .subscribe((resp) => {
       this.usuarios = resp.usuarios  || [];
@@ -71,7 +70,7 @@ export class UsuariosComponent implements OnInit{
   aplicarroles(){
     this.buscar();
   }
-registrar(){
+  registrar(){
   const dialogRef =  this.dialog.open(RegistroUsersComponent,{
     width:'400px',
     disableClose : true

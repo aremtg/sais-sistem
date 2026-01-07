@@ -92,8 +92,8 @@
           <td class="p-3">{{usuario.nombre}}</td>
           <td class="p-3">{{usuario.cedula}}</td>
           <td class="p-3">{{usuario.email}}</td>
-          <td class="p-3">{{usuario.role}}</td>
           <td class="p-3">{{usuario.createdAt | date : 'dd-MM-yyyy'}}</td>
+          <td class="p-3">{{usuario.role}}</td>
           <td class="p-3">{{usuario.isActive}}</td>
           <td class="p-3 flex justify-center gap-4 ">
             <!-- <button matTooltip="Ver" class="text-purple-800 hover:underline">
@@ -109,7 +109,7 @@
         </tr>
       </tbody>
     </table>
-    <p *ngIf="usuarios.length ===0"> No hay datos registrados de alumnos</p>
+    <p *ngIf="usuarios.length === 0">No hay datos registrados de usuarios</p>
   </div>
 
 </div>
