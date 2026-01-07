@@ -23,7 +23,6 @@ export class UsuariosComponent implements OnInit{
   role = Object.values(Roles)
   register! : FormGroup;
   constructor(
-      private fb: FormBuilder,
       private authService : AuthService ,
       private snackbar : MatSnackBar ,
       private dialog : MatDialog

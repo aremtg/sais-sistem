@@ -63,11 +63,13 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
+  // perfil de usuario
   profile() : Observable<PerfilUsers>{
     return this.http.get<PerfilUsers>(`${api}auth/profile`).pipe(
       catchError(this.handleError)
     )
   }
+  // refrescar token
   refreshToken(refreshToken : string): Observable<Login>{
     return this.http.post<Login>(`${api}auth/refresh`,{refreshToken}).pipe(
       catchError(this.handleError)
