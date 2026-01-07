@@ -60,17 +60,18 @@
     </div>
   </div>
 
-  <!-- Contenido -->
-  <div *ngIf="usuarios" class="grid gap-4 p-4 bg-gray-100">
-    <div class="bg-white p-4 rounded shadow">
-      <span class="mb-2 flex items-center justify-center poppins-medium">
-        Información general
-      </span>
-      <p class="text-sm text-gray-700"><strong>Nombre: </strong>{{ usuarios.nombre }}</p>
-      <p class="text-sm text-gray-700"><strong>Apellido: </strong>{{ usuarios.apellido }}</p>
-      <p class="text-sm text-gray-700"><strong>Cédula: </strong>{{ usuarios.cedula }}</p>
-      <p class="text-sm text-gray-700"><strong>Email: </strong>{{ usuarios.email }}</p>
-    </div>
+  <!-- Contenido perfil -->
+<div *ngIf="usuarios?.perfil" class="grid gap-4 p-4 bg-gray-100">
+  <div class="bg-white p-4 rounded shadow">
+    <span class="mb-2 flex items-center justify-center poppins-medium">
+      Información general
+    </span>
+    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Nombre: </strong>{{ usuarios?.perfil?.nombre }}</p>
+    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Apellido: </strong>{{ usuarios?.perfil?.apellido }}</p>
+    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Cédula: </strong>{{ usuarios?.perfil?.cedula }}</p>
+    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Email: </strong>{{ usuarios?.perfil?.email }}</p>
+    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Role: </strong>{{ usuarios?.perfil?.role }}</p>
   </div>
+</div>
 
 </div>

@@ -6,7 +6,7 @@ import {CloudinaryModule} from '@cloudinary/ng';
 import { Cloudinary , CloudinaryImage } from '@cloudinary/url-gen';
 import { AuthService } from '../../service/authService.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Usuario } from '../../interface/login.interface';
+import {  PerfilUsers, Usuario } from '../../interface/login.interface';
 @Component({
   selector: 'app-perfil-usuario',
   standalone: true,
@@ -24,11 +24,10 @@ export class PerfilUsuarioComponent implements OnInit {
   imagen = '';
   usuario = '';
   selectFile : File | null = null;
-  usuarios: Usuario | null = null;
+  usuarios: PerfilUsers | null = null;
   error :  string |null = null;
   constructor( private authlogin : AuthService ,
     private readonly snakbar : MatSnackBar ,
-    private readonly fb : FormBuilder,
   ){}
 
   ngOnInit(): void {
@@ -41,9 +40,8 @@ export class PerfilUsuarioComponent implements OnInit {
       this.usuario = local.getItem('usuario') || '';
     }
     this.authlogin.profile().subscribe({
-      next : (data)=> {
+      next : (data   )=> {
         this.usuarios = data;
-        this.error = null;
       },
       error: (err) => {
         this.error = err.message;

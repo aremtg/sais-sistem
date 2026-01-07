@@ -2,9 +2,8 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { environment } from '../../../enviroments/api-local';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Login, Register, Tablas, tablasfitros, Usuario, Token } from '../interface/login.interface';
+import { Login, Register, Tablas, tablasfitros, PerfilUsers } from '../interface/login.interface';
 import { jwtDecode } from 'jwt-decode';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 const api = environment.apiUrl
 @Injectable({
@@ -64,14 +63,13 @@ export class AuthService {
       catchError(this.handleError)
     );
   }
-  profile() : Observable<Usuario>{
-    return this.http.get<Usuario>(`${api}auth/profile`).pipe(
+  profile() : Observable<PerfilUsers>{
+    return this.http.get<PerfilUsers>(`${api}auth/profile`).pipe(
       catchError(this.handleError)
     )
-
   }
   refreshToken(refreshToken : string): Observable<Login>{
-    return this.http.post<Login>(`${api}auth/refresh` , {refreshToken}).pipe(
+    return this.http.post<Login>(`${api}auth/refresh`,{refreshToken}).pipe(
       catchError(this.handleError)
     )
   }

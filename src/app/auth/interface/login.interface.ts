@@ -54,3 +54,23 @@ export interface Usuario {
   isActive: boolean;
 }
 
+// -------- pefil de usuarios ------
+export interface PerfilUsers {
+  perfil: Perfil;
+}
+
+export interface Perfil {
+  id:        string;
+  cedula:    string;
+  nombre:    string;
+  apellido:  string;
+  email:     string;
+  imagen:    string;
+  role:      string;
+  isActive:  boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: null;
+}
+
+
