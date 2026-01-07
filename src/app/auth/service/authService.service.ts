@@ -2,9 +2,9 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { environment } from '../../../enviroments/api-local';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Login, Register, Tablas, tablasfitros, Usuario } from '../interface/login.interface';
-import { __values } from 'tslib';
-
+import { Login, Register, Tablas, tablasfitros, Usuario, Token } from '../interface/login.interface';
+import { jwtDecode } from 'jwt-decode';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const api = environment.apiUrl
 @Injectable({
@@ -12,7 +12,24 @@ const api = environment.apiUrl
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient,
+  ) { }
+
+  // decodificacion de token para obtener el id
+
+  userId(): string {
+    const token = sessionStorage.getItem('token') || 'no se puede codificar';
+    if (token) {
+      try {
+        const dcotoken: any = jwtDecode(token);
+        return dcotoken.id
+      } catch (error) {
+        return '';
+      };
+    }
+    return '';
+  }
 
   login(cedula: string, password: string): Observable<Login> {
     return this.http.post<Login>(`${api}auth/login`, { cedula, password }).pipe(
@@ -29,16 +46,31 @@ export class AuthService {
         params = params.set(key, values.toString());
       }
     });
-    return this.http.get<Tablas>(`${api}auth/filter`, { params : params }).pipe(
+    return this.http.get<Tablas>(`${api}auth/filter`, { params: params }).pipe(
       catchError(this.handleError)
     )
   }
   // registro de usuario
-  registerUser( register : Register) : Observable<Register>{
-    return this.http.post<Register>(`${api}auth/register` , { register}).pipe(
+  registerUser(register: Register): Observable<Register> {
+    return this.http.post<Register>(`${api}auth/register`, { register }).pipe(
       catchError(this.handleError)
     )
   }
+  // actualizar el usuario
+  // updateuser( id : string , data : Usuario) : Observable<Usuario>{
+  //   return this.http.patch<Usuario>(`${api}auth/${id}`, data).pipe(
+  //     catchError(this.handleError)
+  //   )
+  // }
+  // subir una imagen actualiazar solo la imagen
+  updateUserImage(id: string, image: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('imagen', image);
+    return this.http.patch(`${api}auth/${id}`, formData).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // manejo de errores
   private handleError(error: HttpErrorResponse) {
     let errorMessage = '';
