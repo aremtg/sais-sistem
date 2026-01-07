@@ -7,36 +7,36 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, of } from 'rxjs';
 import { Roles } from './enum/rol.enum';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { RegistroUsersComponent } from './registro-users/registro-users.component';
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [ MatTooltipModule , CommonModule , ReactiveFormsModule , FormsModule],
-templateUrl: './usuarios.component.html',
+  imports: [MatTooltipModule, CommonModule, ReactiveFormsModule, FormsModule],
+  templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
 })
-export class UsuariosComponent implements OnInit{
-  usuarios : Usuario[] = [];
-  filtro : string = '';
-  filtroRol : string = '';
+export class UsuariosComponent implements OnInit {
+  usuarios: Usuario[] = [];
+  filtro: string = '';
+  filtroRol: string = '';
   role = Object.values(Roles)
-  register! : FormGroup;
+  register!: FormGroup;
   constructor(
-      private authService : AuthService ,
-      private snackbar : MatSnackBar ,
-      private dialog : MatDialog
-    ){}
+    private authService: AuthService,
+    private snackbar: MatSnackBar,
+    private dialog: MatDialog
+  ) { }
   ngOnInit(): void {
-   this.buscar()
+    this.buscar()
   }
-  buscar(){
-    let busqueda : tablasfitros = {
-      email : '',
-      cedula : '',
-      role : '',
+  buscar() {
+    let busqueda: tablasfitros = {
+      email: '',
+      cedula: '',
+      role: '',
     };
-    if (this.filtro && this.filtro.trim() !=='') {
+    if (this.filtro && this.filtro.trim() !== '') {
       const terminolimpio = this.filtro.trim().toLowerCase();
       if (terminolimpio.includes('@')) {
         busqueda.email = terminolimpio;
@@ -48,38 +48,39 @@ export class UsuariosComponent implements OnInit{
       busqueda.role = this.filtroRol.toLocaleUpperCase();
     }
     this.authService.getfilter(busqueda)
-    .pipe(
-      catchError((error) => {
-        this.snackbar.open(error.message, 'Cerrar', {
-          duration: 3000,
-        });
-        return of({ usuarios: []});
-           })
-    )
-    .subscribe((resp) => {
-      this.usuarios = resp.usuarios  || [];
-    }
-  )
+        .pipe(
+          catchError((error) => {
+            this.snackbar.open(error.message, 'Cerrar', {
+              duration: 3000,
+            });
+            return of({ usuarios: [] });
+          })
+        )
+        .subscribe((resp) => {
+          this.usuarios = resp.usuarios || [];
+        }
+        );
+
   }
-  limpiarfiltros(){
+  limpiarfiltros() {
     this.filtro = '';
     this.filtroRol = '';
     this.buscar()
     // this.cargrusuarios();
   }
-  aplicarroles(){
+  aplicarroles() {
     this.buscar();
   }
-  registrar(){
-  const dialogRef =  this.dialog.open(RegistroUsersComponent,{
-    width:'400px',
-    disableClose : true
-  });
-  dialogRef.afterClosed().subscribe((resultado)=> {
-    if (resultado) {
-      this.snackbar.open(resultado.message, 'Cerrar',{duration : 3000});
-    }
-    this.buscar();
-  })
-}
+  registrar() {
+    const dialogRef = this.dialog.open(RegistroUsersComponent, {
+      width: '400px',
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe((resultado) => {
+      if (resultado) {
+        this.snackbar.open(resultado.message, 'Cerrar', { duration: 3000 });
+      }
+      this.buscar();
+    })
+  }
 }
