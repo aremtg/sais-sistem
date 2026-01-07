@@ -26,7 +26,7 @@ export class UsuariosComponent implements OnInit {
     private authService: AuthService,
     private snackbar: MatSnackBar,
     private dialog: MatDialog
-  ) { }
+  ) {}
   ngOnInit(): void {
     this.buscar()
   }

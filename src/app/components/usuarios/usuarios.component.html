@@ -109,7 +109,7 @@
         </tr>
       </tbody>
     </table>
-    <p *ngIf="usuarios.length === 0">No hay datos registrados de usuarios</p>
+    <p *ngIf="usuarios.length === 0 && (filtro !== '' || filtroRol !== '')">No hay datos registrados de usuarios</p>
   </div>
 
 </div>
