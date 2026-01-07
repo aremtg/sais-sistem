@@ -1,12 +1,54 @@
-<h1 matDialogTitle>Title</h1>
+<h1 matDialogTitle>Registro de Usuarios</h1>
 
 <mat-dialog-content>
-  <form action="">
-    
+  <form action="" [formGroup]="users" class="mt-4">
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Usuario <strong class="text-sm text-red-500 font-light"> por favor digite la cedula como usuario</strong></label>
+      <input  type="text" formControlName="cedula"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+      <input  type="text" formControlName="nombre"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
+      <input  type="text" formControlName="apellido"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600">
+    </div>
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+      <input  type="password" formControlName="password"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+      <input type="email" formControlName="email"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Subir Imagen</label>
+      <input type="file" formControlName="imagen"
+        class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Rol Sistema</label>
+      <select formControlName="role" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+               bg-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600">
+        <option *ngFor="let rol of role" [value]="rol"> {{rol}}</option>
+      </select>
+    </div>
+
   </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button mat-button (click)="cancelar()">Cerrar</button>
-    <button mat-button (click)="guardar()">Guardar</button>
+  <button mat-button (click)="cancelar()">Cerrar</button>
+  <button mat-button (click)="guardar()">Guardar</button>
 </mat-dialog-actions>

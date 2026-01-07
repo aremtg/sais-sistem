@@ -51,7 +51,7 @@ export class AuthService {
   }
   // registro de usuario
   registerUser(register: Register): Observable<Register> {
-    return this.http.post<Register>(`${api}auth/register`, { register }).pipe(
+    return this.http.post<Register>(`${api}auth/register`, register).pipe(
       catchError(this.handleError)
     )
   }
