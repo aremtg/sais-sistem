@@ -5,7 +5,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ RouterLink , CommonModule, RouterLinkActive],
+  imports: [ RouterLink , CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
