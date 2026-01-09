@@ -7,14 +7,8 @@ export const routes: Routes = [
 },
 {
   path: 'sistema/dashboard',
-  loadComponent: () => import('./components/dashboard/dashboard.component').then(m => m.DashboardComponent)
-},
-{
-  path: 'sistema/dashboard',
   loadChildren: () => import('./components/dashboard/routes/dashborard.routes').then(m => m.Dashboard)
-
 },
-
 {
   path:'**',
   redirectTo: 'Auth/not-found',

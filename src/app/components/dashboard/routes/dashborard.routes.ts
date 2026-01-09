@@ -35,9 +35,15 @@ export const Dashboard: Routes = [
       {
         path: 'Auth/ver-perfil',
         loadComponent: () =>
-          import(
-            '../../../auth/pages/perfil-usuario/perfil-usuario.component'
-          ).then((m) => m.PerfilUsuarioComponent),
+          import('../../../auth/pages/perfil-usuario/perfil-usuario.component').then(
+            (m) => m.PerfilUsuarioComponent),
+      },
+      {
+        path: 'attendance',
+        loadComponent: () =>
+          import('../../asistencia/asistencia.component').then(
+            (m) => m.AsistenciaComponent
+          ),
       },
 
       {
