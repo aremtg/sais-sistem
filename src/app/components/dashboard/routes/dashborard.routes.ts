@@ -42,10 +42,8 @@ export const Dashboard: Routes = [
         path: 'attendance',
         loadComponent: () =>
           import('../../asistencia/asistencia.component').then(
-            (m) => m.AsistenciaComponent
-          ),
+            (m) => m.AsistenciaComponent),
       },
-
       {
         path: '',
         redirectTo: 'home',
