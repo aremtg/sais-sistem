@@ -10,15 +10,6 @@ export const Dashboard: Routes = [
         path: 'home',
         loadComponent: () =>
           import('../../home/home.component').then((m) => m.HomeComponent),
-        children: [
-          {
-            path: 'attendance',
-            loadComponent: () =>
-              import('../../asistencia/asistencia.component').then(
-                (m) => m.AsistenciaComponent),
-          }
-
-        ],
       },
       {
         path: 'students',
@@ -46,6 +37,14 @@ export const Dashboard: Routes = [
         loadComponent: () =>
           import('../../../auth/pages/perfil-usuario/perfil-usuario.component').then(
             (m) => m.PerfilUsuarioComponent),
+      },
+      // rutas del modulo de home de asistencias
+      {
+        path: 'assitencias',
+        loadComponent: () =>
+          import('../../asistencia/asistencia.component').then(
+            (m) => m.AsistenciaComponent
+          ),
       },
       {
         path: '',
