@@ -8,13 +8,28 @@
     </p>
   </div>
   <form mat-dialog-content class="space-y-6">
-    <div class="grid grid-cols-1 md:grid-cols-1">
+    <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
       <div class="flex flex-col justify-center items-center mb-4 mr-4">
         <label class="block text-sm font-medium text-black">Cedula : </label>
         <input type="text" id="cedula" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
       </div>
     </div>
+    <div class="mb-4" *ngIf="mostrardetallesobjeto">
+      <label class="block text-sm font-medium text-black">objeto</label>
+      <input type="text" id="cedula" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+    </div>
   </form>
+  <div *ngIf="!mostrardetallesobjeto" class="flex gap-2 justify-end items-center">
+    <button (click)="mostarobsjeto()" class="rounded-md bg-purple-700 hover:bg-purple-800 text-white px-4 py-2">
+      <mat-icon class="p-1">add</mat-icon>
+      Registrar Objeto</button>
+  </div>
+  <div *ngIf="mostrardetallesobjeto" class="flex gap-2">
+    <button mat-button type="button" (click)="mostrardetallesobjeto = false"
+      class="px-4 py-2 bg-gray-500 text-white rounded">
+      Atrás
+    </button>
+  </div>
   <div class="flex justify-end space-x-4" mat-dialog-actions>
     <button mat-button mat-dialog-close class=" px-4 py-2">
       Cancelar
