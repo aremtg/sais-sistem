@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -12,6 +12,13 @@ import { MatDialogModule } from '@angular/material/dialog';
   styleUrl: './registre-person.component.scss'
 })
 export class RegistrePersonComponent {
+   registerfrom! : FormGroup
+  constructor(registerfrom: FormBuilder) {
+    this.registerfrom = registerfrom.group({
+      cedula : ['' , Validators.required],
+      objeto : [''],
+    })
 
+  }
 
 }
