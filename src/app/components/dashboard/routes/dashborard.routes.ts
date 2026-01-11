@@ -40,12 +40,20 @@ export const Dashboard: Routes = [
       },
       // rutas del modulo de home de asistencias
       {
-        path: 'assitencias',
+        path: 'asistencias-ingresos',
         loadComponent: () =>
           import('../../asistencia/asistencia.component').then(
             (m) => m.AsistenciaComponent
           ),
       },
+      {
+        path: 'asistencias-salidas',
+        loadComponent: () =>
+          import('../../asistencias-exist/asistencias-exist.component').then(
+            (m) => m.AsistenciasExistComponent
+          ),
+      },
+
       {
         path: '',
         redirectTo: 'home',
