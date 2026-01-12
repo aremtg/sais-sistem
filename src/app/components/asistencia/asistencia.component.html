@@ -1,24 +1,25 @@
-<div class="w-full bg-white p-6 rounded-xl shadow space-y-8">
+<div class="w-full bg-white p-6 rounded-xl shadow-md space-y-8">
   <div class="flex items-center mb-4 ">
     <a routerLink="../home"
-      class="flex py-1 px-2 hover:bg-purple-700 hover:text-white mr-2 cursor-pointer text-md poppins-bold border rounded-xl">
+      class="flex py-1 px-2 hover:bg-purple-700 hover:text-white mr-2 cursor-pointer text-md border rounded-xl shadow-md">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" stroke-width="3" stroke="currentColor"
         class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
       </svg>
     </a>
+
   </div>
   <div class="flex flex-col p-4 rounded">
-    <h1 class="text-2xl font-semibold">
+    <h1 class="text-2xl poppins-bold">
       Panel de Asistencia Ingresos
     </h1>
-    <p class="text-sm opacity-90">
+    <p class="text-sm opacity-50">
       Control general de asistencia de personal y estudiantes de Ingreso.
     </p>
   </div>
   <div class="flex grid-cols-1 md:grid-cols-3 sm:grid-cols-6 gap-20 justify-center items-center">
     <button (click)="open()" type="button"
-      class="bg-purple-700 hover:bg-purple-800 text-white p-6 rounded-xl shadow transition block text-center">
+      class="bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-xl shadow-md transition block text-center poppins-semibold">
       Registrar Asistencia
     </button>
   </div>
