@@ -4,6 +4,7 @@ import { environment } from '../../../enviroments/api-local';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Login, Register, Tablas, tablasfitros, PerfilUsers } from '../interface/login.interface';
 import { jwtDecode } from 'jwt-decode';
+import { CatchError } from '../../shared/error/catchError';
 
 const api = environment.apiUrl
 @Injectable({
@@ -12,7 +13,7 @@ const api = environment.apiUrl
 export class AuthService {
 
 
-  constructor(private http: HttpClient,
+  constructor(private http: HttpClient , private catcherror : CatchError
   ) { }
 
   // decodificacion de token para obtener el id
@@ -33,10 +34,10 @@ export class AuthService {
   login(cedula: string, password: string): Observable<Login> {
     return this.http.post<Login>(`${api}auth/login`, { cedula, password }).pipe(
       // capturamos errores
-      catchError(this.handleError)
+      catchError(error => this.catcherror.handleError(error))
     );
   }
-  // filtros de busqueda
+  // filtros de busqueda y tabla
   getfilter(filtros: tablasfitros) {
     let params = new HttpParams();
     Object.entries(filtros).forEach(([key, values]) => {
@@ -46,13 +47,13 @@ export class AuthService {
       }
     });
     return this.http.get<Tablas>(`${api}auth/filter`, { params: params }).pipe(
-      catchError(this.handleError)
+      catchError(error => this.catcherror.handleError(error))
     )
   }
   // registro de usuario
   registerUser(register: Register): Observable<Register> {
     return this.http.post<Register>(`${api}auth/register`, register).pipe(
-      catchError(this.handleError)
+      catchError(error => this.catcherror.handleError(error))
     )
   }
   // actualizar la imagen y demas data del usuario
@@ -60,39 +61,20 @@ export class AuthService {
     const formData = new FormData();
     formData.append('imagen', image);
     return this.http.patch(`${api}auth/${id}`, formData).pipe(
-      catchError(this.handleError)
+      catchError(error => this.catcherror.handleError(error))
     );
   }
   // perfil de usuario
   profile() : Observable<PerfilUsers>{
     return this.http.get<PerfilUsers>(`${api}auth/profile`).pipe(
-      catchError(this.handleError)
+      catchError(error => this.catcherror.handleError(error))
     )
   }
   // refrescar token
   refreshToken(refreshToken : string): Observable<Login>{
     return this.http.post<Login>(`${api}auth/refresh`,{refreshToken}).pipe(
-      catchError(this.handleError)
+      catchError(error => this.catcherror.handleError(error))
     )
-  }
-
-
-  // manejo de errores
-  private handleError(error: HttpErrorResponse) {
-    let errorMessage = '';
-
-    if (error.status === 401) {
-      errorMessage = 'No está autorizado para realizar esta acción';
-    } else if (error.status === 400) {
-      errorMessage = error.error?.message || 'Solicitud incorrecta, revise los datos enviados';
-    } else if (error.status === 409) {
-      errorMessage = error.error?.message || 'Conflicto: El recurso ya existe';
-    } else if (error.status === 500) {
-      errorMessage = 'Error interno del servidor, intente más tarde';
-    } else if (error.error?.message) {
-      errorMessage = error.error.message;
-    }
-    return throwError(() => new Error(errorMessage));
   }
 
 

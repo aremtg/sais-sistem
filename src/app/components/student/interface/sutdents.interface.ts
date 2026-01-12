@@ -4,6 +4,11 @@ export interface TablasEstudiantes {
   count:    number;
   students: Student[];
 }
+export interface TablasFiltrosEstudiantes {
+  cedula?:    string;
+  teacher_id ? :  string;
+  curso_id ? :  string;
+}
 
 export interface Student {
   id:         string;
