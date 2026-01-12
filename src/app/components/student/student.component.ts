@@ -4,6 +4,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Student } from './interface/sutdents.interface';
 @Component({
   selector: 'app-student',
   standalone: true,
@@ -13,6 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 })
 export class StudentComponent {
 
+  estudiantes : Student[] = [];
+
+  constructor() { }
 
 
 }
