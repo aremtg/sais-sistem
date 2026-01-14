@@ -60,9 +60,10 @@ export class StudentComponent implements OnInit {
       disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 'success') {
-        this.buscarEstudiantes();
+      if (result) {
+        this.snackbar.open(result.message, 'Cerrar', { duration: 2000 });
       }
+      this.buscarEstudiantes();
     });
   }
 
