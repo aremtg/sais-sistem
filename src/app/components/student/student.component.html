@@ -95,8 +95,18 @@
           <td class="p-3">{{ students.lastname }}</td>
           <td class="p-3">{{ students.cedula }}</td>
           <td class="p-3">{{ students.email }}</td>
-          <td class="p-3">{{ students.cursos }}</td>
-          <td class="p-3">{{ students.teacher }}</td>
+          <td class="p-3">
+          <span *ngIf="!students.cursos || students.cursos.length === 0">
+            Sin curso registrado
+          </span>
+          <span *ngIf="students.cursos && students.cursos.length > 0">
+            {{ students.cursos }}
+          </span>
+          </td>
+          <td class="p-3">
+            <span *ngIf="!students.teacher || students.teacher === 0">Sin registrar profesor</span>
+            <span *ngIf="students.teacher && students.teacher > 0">{{ students.teacher }}</span>
+          </td>
 
           <td class="p-3 flex justify-center gap-4 ">
             <button matTooltip="Ver" class="text-purple-800 hover:underline">
