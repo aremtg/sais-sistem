@@ -5,7 +5,7 @@ import { AuthService } from '../../auth/service/authService.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError, of } from 'rxjs';
+import { catchError, count, of } from 'rxjs';
 import { Roles } from './enum/rol.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { RegistroUsersComponent } from './registro-users/registro-users.component';
@@ -36,7 +36,7 @@ export class UsuariosComponent implements OnInit {
       email: '',
       cedula: '',
       role: '',
-      
+
     };
     if (this.filtro && this.filtro.trim() !== '') {
       const terminolimpio = this.filtro.trim().toLowerCase();
@@ -56,7 +56,7 @@ export class UsuariosComponent implements OnInit {
       .pipe(
         catchError((error) => {
           this.snackbar.open(error.message, 'Cerrar', { duration: 1000 });
-          return of({ usuarios: [] });
+          return of({ usuarios: [] , count : 0 });
         })
       )
       .subscribe((resp) => {

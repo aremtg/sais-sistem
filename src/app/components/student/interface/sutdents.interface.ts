@@ -4,12 +4,6 @@ export interface TablasEstudiantes {
   count:    number;
   students: Student[];
 }
-export interface TablasFiltrosEstudiantes {
-  cedula?:    string;
-  teacher_id ? :  string;
-  curso_id ? :  string;
-}
-
 export interface Student {
   id:         string;
   cedula:     string;
@@ -58,4 +52,10 @@ export interface Updatebyuser {
   usuario:      string;
   nombre:       string;
   updatebyuser: Date;
+}
+// -------------------filtros de la tabla estudiantes ------------------------
+export interface TablasFiltrosEstudiantes {
+  cedula?:    string;
+  teacher_id ? :  string;
+  curso_id ? :  string;
 }
