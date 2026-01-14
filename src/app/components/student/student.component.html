@@ -12,7 +12,7 @@
       </p>
     </div>
 
-    <button
+    <button (click)="register()"
       class="inline-flex items-center gap-2 rounded-md bg-purple-700 px-4 py-2
              text-sm font-medium text-white hover:bg-purple-800 transition"
       matTooltip="Registrar nuevo estudiante">
@@ -87,7 +87,6 @@
           <th class="p-3 text-center">Acciones</th>
         </tr>
       </thead>
-
       <tbody>
         <tr *ngFor="let students of estudiantes ; let i= index" class="border-t hover:bg-gray-50">
           <td class="p-3">{{ i + 1 }}</td>
@@ -96,12 +95,8 @@
           <td class="p-3">{{ students.cedula }}</td>
           <td class="p-3">{{ students.email }}</td>
           <td class="p-3">
-          <span *ngIf="!students.cursos || students.cursos.length === 0">
-            Sin curso registrado
-          </span>
-          <span *ngIf="students.cursos && students.cursos.length > 0">
-            {{ students.cursos }}
-          </span>
+          <span *ngIf="!students.cursos || students.cursos.length === 0">Sin curso registrado</span>
+          <span *ngIf="students.cursos && students.cursos.length > 0">{{ students.cursos }}</span>
           </td>
           <td class="p-3">
             <span *ngIf="!students.teacher || students.teacher === 0">Sin registrar profesor</span>

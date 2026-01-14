@@ -59,3 +59,28 @@ export interface TablasFiltrosEstudiantes {
   teacher_id ? :  string;
   curso_id ? :  string;
 }
+// -----registro de estudiantes -----
+export interface RegisterStudents {
+  message:         string;
+  student:         Student;
+  userId:          UserID;
+  cursosInscritos: number;
+}
+
+export interface Student {
+  id:        string;
+  cedula:    string;
+  name:      string;
+  lastname:  string;
+  telefono:  string;
+  email:     string;
+  createdAt: Date;
+  teacher:   null;
+  cursos:    any[];
+}
+
+export interface UserID {
+  id:            string;
+  lastcreatedAt: Date;
+}
+

@@ -1,0 +1,50 @@
+<div class=" bg-white px-6 rounded-xl shadow-md space-y-8 poppins-medium">
+  <div class="flex items-center text-center" mat-dialog-title>
+    <h1>Registro de Estudiantes</h1>
+    <p class="text-sm text-gray-300">este es un registro de estudiantes</p>
+  </div>
+  <div class="space-y-4" >
+    <form [formGroup]="registerStudent" action="" mat-dialog-content>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col">
+
+          <label class="block poppins-bold text-sm text-black">Nombre: </label>
+          <input type="text" formControlName="name"
+            class="mt-1 block w-full border-2 border-gray-200 rounded-md text-md shadow-md p-2 outline-none">
+        </div>
+        <div class="flex flex-col">
+          <label class="block poppins-bold text-sm text-black">Cédula: </label>
+          <input type="text" formControlName="cedula"
+            class="mt-1 block w-full border-2 border-gray-200 rounded-md text-md shadow-md p-2 outline-none">
+        </div>
+        <div class="flex flex-col">
+          <label class="block poppins-bold text-sm text-black">Apellido: </label>
+          <input type="text" formControlName="lastname"
+            class="mt-1 block w-full border-2 border-gray-200 rounded-md text-md shadow-md p-2 outline-none">
+        </div>
+        <div class="flex flex-col">
+          <label class="block poppins-bold text-sm text-black">Telefono: </label>
+          <input type="text" formControlName="telefono"
+            class="mt-1 block w-full border-2 border-gray-200 rounded-md text-md shadow-md p-2 outline-none">
+        </div>
+        <div class="flex flex-col">
+          <label class="block poppins-bold text-sm text-black">Email: </label>
+          <input type="email" formControlName="email"
+            class="mt-1 block w-full border-2 border-gray-200 rounded-md text-md shadow-md p-2 outline-none">
+        </div>
+      </div>
+      <div class="flex justify-end space-x-4 font-medium p-2" mat-dialog-actions>
+        <button mat-dialog-close
+          class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-red-600 hover:bg-gray-300 transition">
+          Cancelar
+        </button>
+        <button type="submit" (click)="guardar()"
+          class="inline-flex items-center gap-2 rounded-md bg-purple-700 px-4 py-2 text-sm font-medium text-white hover:bg-purple-800 transition">
+          <span>
+            Registrar Estudiante
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
