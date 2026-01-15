@@ -11,6 +11,15 @@
     <form [formGroup]="registerStudent" mat-dialog-content class="space-y-6 p-4">
       <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
         <div class="flex flex-col">
+          <label class="block poppins-bold text-sm text-black">Tipo de Identificacion</label>
+            <select >
+              <option value="V">seleccione el tipo de identificacion</option>
+              <option value="E">Cedula de ciudadania</option>
+              <option value="P">Tarjeta de Identificacion</option>
+              <option value="P">Pasaporte</option>
+            </select>
+        </div>
+        <div class="flex flex-col">
           <label class="block poppins-bold text-sm text-black">Cédula: </label>
           <input type="text" formControlName="cedula"
             class="mt-1 block w-full border-2 border-gray-200 rounded-md text-md shadow-md p-2 outline-none">

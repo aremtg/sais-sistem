@@ -1,130 +1,139 @@
 <div class="w-full bg-white p-6 rounded-lg shadow space-y-8">
-  <div class="w-full bg-white p-6 rounded-xl shadow space-y-6">
+  <div class="w-full  p-6 space-y-6">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <h1 class="text-2xl font-semibold text-gray-800">
+          Módulo de Estudiantes
+        </h1>
+        <p class="text-sm text-gray-500">
+          Registro, consulta y control académico de estudiantes
+        </p>
+      </div>
 
-  <!-- Header -->
-  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-    <div>
-      <h1 class="text-2xl font-semibold text-gray-800">
-        Módulo de Estudiantes
-      </h1>
-      <p class="text-sm text-gray-500">
-        Registro, consulta y control académico de estudiantes
-      </p>
+      <button (click)="register()" class="inline-flex items-center gap-2 rounded-md bg-purple-700 px-4 py-2
+             text-sm font-medium text-white hover:bg-purple-800 transition" matTooltip="Registrar nuevo estudiante">
+        + Registrar estudiante
+      </button>
     </div>
 
-    <button (click)="register()"
-      class="inline-flex items-center gap-2 rounded-md bg-purple-700 px-4 py-2
-             text-sm font-medium text-white hover:bg-purple-800 transition"
-      matTooltip="Registrar nuevo estudiante">
-      + Registrar estudiante
-    </button>
-  </div>
-
-  <div class="w-full bg-gray-100 rounded-lg p-4 shadow-sm">
-    <div class="flex flex-col gap-4 md:flex-row md:items-end">
-      <!-- Buscador -->
-      <div class="w-full md:w-1/3">
-        <label class="block text-sm font-medium text-gray-700 mb-1">
-          Buscar
-        </label>
-        <div class="flex gap-2">
-          <input [(ngModel)]="filtros" type="text"
-          placeholder="Buscar por cedula" class="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600" />
-          <button (click)="buscarEstudiantes()" type="submit" class="rounded-md bg-purple-700 px-5 py-2 text-sm font-medium text-white hover:bg-purple-800 transition whitespace-nowrap" matTooltip="Buscar">
+    <div class="w-full bg-gray-100 rounded-lg p-4 shadow-sm">
+      <div class="flex flex-col gap-4 md:flex-row md:items-end">
+        <!-- Buscador -->
+        <div class="w-full md:w-1/3">
+          <label class="block text-sm font-medium text-gray-700 mb-1">
             Buscar
+          </label>
+          <div class="flex gap-2">
+            <input [(ngModel)]="filtros" type="text" placeholder="Buscar por cedula"
+              class="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600" />
+            <button (click)="buscarEstudiantes()" type="submit"
+              class="rounded-md bg-purple-700 px-5 py-2 text-sm font-medium text-white hover:bg-purple-800 transition whitespace-nowrap"
+              matTooltip="Buscar">
+              Buscar
+            </button>
+          </div>
+        </div>
+        <!-- Curso -->
+        <div class="w-full md:w-1/4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Curso
+          </label>
+          <select [(ngModel)]="cursoseleccionado" (change)="buscarEstudiantes()" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+                     bg-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600"
+            matTooltip="seleciona un curso">
+            <option value="">Todos los Cursos</option>
+            <option *ngFor="let curso of cursos" [value]="curso.id">
+              {{curso.codigo}} - {{curso.nombreCurso}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Profesor -->
+        <div class="w-full md:w-1/4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Profesor
+          </label>
+          <select [(ngModel)]="profesorseleccionado" (change)="buscarEstudiantes()" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+               bg-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600"
+            matTooltip="selecciona un profesor">
+            <option value="">Todos Profesores</option>
+            <option *ngFor="let teachers of profesores" [value]="teachers.id">
+              {{teachers.cedula}} - {{teachers.nombre}}{{teachers.apellido}} - {{teachers.profesion}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Botones -->
+        <div class="flex gap-2 w-full md:w-auto">
+          <button (click)="filtrosLimpiar()" type="reset" class="w-full md:w-auto rounded-md bg-gray-300 px-4 py-2 text-sm
+               font-medium text-gray-700 hover:bg-gray-400 transition" matTooltip="Limpiar filtros">
+            Limpiar Filtros
           </button>
         </div>
-      </div>
-      <!-- Curso -->
-      <div class="w-full md:w-1/4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">
-          Curso
-        </label>
-        <select [(ngModel)]="cursoseleccionado" (change)="buscarEstudiantes()" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
-                     bg-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600"
-          matTooltip="seleciona un curso">
-          <option value="">Todos los Cursos</option>
-          <option *ngFor="let curso of cursos" [value]="curso.id">
-            {{curso.codigo}} - {{curso.nombreCurso}}
-          </option>
-        </select>
-      </div>
 
-      <!-- Profesor -->
-      <div class="w-full md:w-1/4">
-        <label class="block text-sm font-medium text-gray-700 mb-1">
-          Profesor
-        </label>
-        <select [(ngModel)]="profesorseleccionado" (change)="buscarEstudiantes()" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
-               bg-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600" matTooltip="selecciona un profesor">
-          <option value="">Todos Profesores</option>
-          <option *ngFor="let teachers of profesores"
-           [value]="teachers.id">
-          {{teachers.cedula}} - {{teachers.nombre}}{{teachers.apellido}} - {{teachers.profesion}}
-          </option>
-        </select>
       </div>
+    </div>
 
-      <!-- Botones -->
-      <div class="flex gap-2 w-full md:w-auto">
-        <button (click)="filtrosLimpiar()" type="reset" class="w-full md:w-auto rounded-md bg-gray-300 px-4 py-2 text-sm
-               font-medium text-gray-700 hover:bg-gray-400 transition" matTooltip="Limpiar filtros">
-          Limpiar Filtros
-        </button>
+    <!-- Tabla -->
+    <div class="overflow-x-auto rounded-xl border-2 border-gray-200">
+      <table class="w-full text-sm text-left " *ngIf="estudiantes.length > 0">
+        <thead class="bg-gray-100 text-gray-700 ">
+          <tr>
+            <th class="p-3">#</th>
+            <th class="p-3">Cédula</th>
+            <th class="p-3">Nombre</th>
+            <th class="p-3">Apellido</th>
+            <th class="p-3">Telefono</th>
+            <th class="p-3">Email</th>
+            <th class="p-3">Curso</th>
+            <th class="p-3">Profesor</th>
+            <th class="p-3 text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let students of estudiantes ; let i= index" class="border-t hover:bg-gray-50">
+            <td class="p-3">{{ i + 1 }}</td>
+            <td class="p-3">{{ students.cedula }}</td>
+            <td class="p-3">{{ students.name }}</td>
+            <td class="p-3">{{ students.lastname }}</td>
+            <td class="p-3">{{ students.telefono }}</td>
+            <td class="p-3">{{ students.email }}</td>
+            <td class="p-3">
+              <span *ngIf="!students.cursos || students.cursos.length === 0">Sin curso registrado</span>
+              <span *ngIf="students.cursos && students.cursos.length > 0">{{ students.cursos }}</span>
+            </td>
+            <td class="p-3">
+              <span *ngIf="!students.teacher || students.teacher === 0">Sin registrar profesor</span>
+              <span *ngIf="students.teacher && students.teacher > 0">{{ students.teacher }}</span>
+            </td>
+
+            <td class="p-3 flex justify-center gap-4 ">
+              <button matTooltip="Ver" class="text-purple-800 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                  fill="#75FB4C">
+                  <path
+                    d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z" />
+                </svg>
+              </button>
+              <button matTooltip="Editar" class="text-yellow-700 hover:underline">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EAC452">
+                <path
+                  d="M160-400v-80h280v80H160Zm0-160v-80h440v80H160Zm0-160v-80h440v80H160Zm360 560v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q8 9 12.5 20t4.5 22q0 11-4 22.5T863-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+              </svg>
+              </button>
+              <button matTooltip="Eliminar" class="text-red-700 hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323">
+                  <path
+                    d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="estudiantes.length === 0" class="p-4 text-center text-gray-500">
+        No hay estudiantes registrados. "{{filtros}}"
       </div>
 
     </div>
-  </div>
-
-    <!-- Tabla -->
-  <div class="overflow-x-auto rounded-xl border-2 border-gray-200">
-    <table class="w-full text-sm text-left "  *ngIf="estudiantes.length > 0">
-      <thead class="bg-gray-100 text-gray-700 ">
-        <tr>
-          <th class="p-3">#</th>
-          <th class="p-3">Cédula</th>
-          <th class="p-3">Nombre</th>
-          <th class="p-3">Apellido</th>
-          <th class="p-3">Telefono</th>
-          <th class="p-3">Email</th>
-          <th class="p-3">Curso</th>
-          <th class="p-3">Profesor</th>
-          <th class="p-3 text-center">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let students of estudiantes ; let i= index" class="border-t hover:bg-gray-50">
-          <td class="p-3">{{ i + 1 }}</td>
-          <td class="p-3">{{ students.cedula }}</td>
-          <td class="p-3">{{ students.name }}</td>
-          <td class="p-3">{{ students.lastname }}</td>
-          <td class="p-3">{{ students.telefono }}</td>
-          <td class="p-3">{{ students.email }}</td>
-          <td class="p-3">
-          <span *ngIf="!students.cursos || students.cursos.length === 0">Sin curso registrado</span>
-          <span *ngIf="students.cursos && students.cursos.length > 0">{{ students.cursos }}</span>
-          </td>
-          <td class="p-3">
-            <span *ngIf="!students.teacher || students.teacher === 0">Sin registrar profesor</span>
-            <span *ngIf="students.teacher && students.teacher > 0">{{ students.teacher }}</span>
-          </td>
-
-          <td class="p-3 flex justify-center gap-4 ">
-            <button matTooltip="Ver" class="text-purple-800 hover:underline">
-              Ver
-            </button>
-            <button matTooltip="Editar" class="text-yellow-700 hover:underline">
-              Editar
-            </button>
-            <button matTooltip="Eliminar" class="text-red-700 hover:underline">
-              Eliminar
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div *ngIf="estudiantes.length === 0" class="p-4 text-center text-gray-500">
-      No hay estudiantes registrados. "{{filtros}}"
-  </div>
-
-</div>
