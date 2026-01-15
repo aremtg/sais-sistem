@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../enviroments/api-local';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { RegisterStudents, TablasEstudiantes, TablasFiltrosEstudiantes } from '../interface/sutdents.interface';
-import { catchError } from 'rxjs';
+import { Curso, ListadoCursos, ListadoProfesores, RegisterStudents, TablasEstudiantes, TablasFiltrosEstudiantes, Teacher } from '../interface/sutdents.interface';
+import { catchError, Observable } from 'rxjs';
 import { CatchError } from '../../../shared/error/catchError';
 const api = environment.apiUrl
 @Injectable({
@@ -29,5 +29,12 @@ export class EstudentsService {
     return this.http.post<RegisterStudents>(`${api}students/register`, register).pipe(
       catchError( error => this.catcherror.handleError(error))
     );
+  }
+  // listado de profesores
+  listadoprofes() :  Observable<ListadoProfesores> {
+    return this.http.get<ListadoProfesores>(`${api}students/teachers/all`)
+  }
+  listadocursos() : Observable<ListadoCursos> {
+    return this.http.get<ListadoCursos>(`${api}students/cursos/all`)
   }
 }

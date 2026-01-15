@@ -84,3 +84,28 @@ export interface UserID {
   lastcreatedAt: Date;
 }
 
+// ---listado de profesores inscritos en el sistema ----
+export interface ListadoProfesores {
+  message:  string;
+  teachers: Teacher[];
+}
+
+export interface Teacher {
+  id:        string;
+  cedula:    string;
+  nombre:    string;
+  apellido:  string;
+  profesion: string;
+}
+// ---listado de cursos inscritos en el sistema ----
+export interface ListadoCursos {
+  message: string;
+  cursos:  Curso[];
+}
+
+export interface Curso {
+  id:          string;
+  nombreCurso: string;
+  codigo:      string;
+}
+
