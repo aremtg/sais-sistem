@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EstudentsService } from '../service/estudiantes.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DialogModule } from '@angular/cdk/dialog';
 import { MatDialogRef, MatDialogTitle, MatDialogClose, MatDialogContent } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Curso } from '../interface/sutdents.interface';
 
 @Component({
   selector: 'app-register-students',
@@ -13,9 +14,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './register-students.component.html',
   styleUrl: './register-students.component.scss'
 })
-export class RegisterStudentsComponent {
+export class RegisterStudentsComponent implements OnInit {
 
   registerStudent : FormGroup;
+  cursos : Curso[] = [];
   constructor( private readonly estudiantesService: EstudentsService ,
     private dialogRef : MatDialogRef<RegisterStudentsComponent> ,
     private fb : FormBuilder ,
@@ -29,6 +31,14 @@ export class RegisterStudentsComponent {
       telefono : ['', Validators.required],
       email    : ['' , [Validators.required , Validators.email ]],
     });
+  }
+  ngOnInit(): void {
+    // cargar los cursos disponibles
+     this.estudiantesService.listadocursos().subscribe({
+      next : ( resp ) => {
+        this.cursos = resp.cursos;
+      }
+     });
   }
   cancelar(){
     this.registerStudent.reset();

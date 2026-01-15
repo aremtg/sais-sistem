@@ -77,7 +77,6 @@ export class StudentComponent implements OnInit {
   register() {
     // Abrir un diálogo para registrar un nuevo estudiante
     const dialogRef = this.dialog.open(RegisterStudentsComponent, {
-      width: '400px',
       disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
