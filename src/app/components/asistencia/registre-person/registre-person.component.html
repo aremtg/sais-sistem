@@ -1,6 +1,6 @@
-<div class="bg-white px-6 rounded-xl shadow-md space-y-8 poppins-medium">
-  <div class="flex items-center mb-4 text-center " matDialogTitle>
-    <h1 class="text-2xl poppins-bold">
+<div class="bg-white rounded-xl shadow-md space-y-8 poppins-medium">
+  <div class="flex items-center flex-col bg-gray-100 border-b border-gray-200 p-5" >
+    <h1 class="text-xl poppins-bold">
       Registrar Asistencia de Personal
     </h1>
     <p class="text-sm opacity-50">
@@ -9,21 +9,22 @@
   </div>
   <form mat-dialog-content class="space-y-6">
     <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
-      <div class="flex flex-col justify-center items-center mb-4 mr-4">
+      <div class="flex flex-col justify-center mb-4 mr-4">
         <label class="block poppins-bold text-sm text-black">Cedula: </label>
         <input type="text" id="cedula"
-          class="mt-1 block w-8/12 border-2 border-gray-200 rounded-md text-xl text-center shadow-md p-2 outline-none">
+          class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gray-300 focus:border-gray-400 outline-none transition-all">
       </div>
     </div>
     <div class="mb-4" *ngIf="mostrardetallesobjeto">
       <label class="block text-sm  text-black">Objeto</label>
       <input type="text" id="cedula"
-        class="mt-1 block w-full border-2 border-gray-200 rounded-md text-md shadow-md p-2 outline-none">
+        class="mt-1 block w-full border-2 border-gray-200 rounded-md text-sm shadow-md p-2 outline-none">
     </div>
   </form>
   <div *ngIf="!mostrardetallesobjeto" class="flex justify-end">
     <button (click)="mostarobsjeto()"
-      class="bg-purple-700 hover:bg-purple-800 text-white p-3 py-2 rounded-xl shadow-md transition block poppins-semibold text-center">
+      class="inline-flex items-center gap-2 rounded-md bg-purple-700 px-4 py-2
+             text-sm font-medium text-white hover:bg-purple-800 transition">
       <mat-icon class="p-1">add</mat-icon>
       Objeto</button>
   </div>
@@ -34,8 +35,8 @@
     </button>
   </div>
   <div class="flex justify-end space-x-4 font-medium" mat-dialog-actions>
-    <button mat-dialog-close class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2
-             text-sm font-medium text-red-600 hover:bg-gray-300 transition">
+    <button mat-dialog-close class="inline-flex items-center gap-2 rounded-md bg-red-600 px-4 py-2
+             text-sm font-medium text-white hover:bg-red-500 transition">
       Cancelar
     </button>
     <button type="submit"

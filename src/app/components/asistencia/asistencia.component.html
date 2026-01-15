@@ -1,14 +1,15 @@
 <div class="w-full bg-white p-6 rounded-xl shadow-md space-y-8">
   <div class="flex items-center mb-4 ">
     <a routerLink="../home"
-      class="flex py-1 px-2 hover:bg-purple-700 hover:text-white mr-2 cursor-pointer text-md border rounded-xl shadow-md">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" stroke-width="3" stroke="currentColor"
-        class="size-6">
+      class="cursor-pointer ">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" stroke-width="3" stroke="currentColor"
+        class="size-7 hover:stroke-violet-800 transition ">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
       </svg>
     </a>
 
   </div>
+
   <div class="flex flex-col p-4 rounded">
     <h1 class="text-2xl poppins-bold">
       Panel de Asistencia Ingresos
@@ -19,9 +20,62 @@
   </div>
   <div class="flex grid-cols-1 md:grid-cols-3 sm:grid-cols-6 gap-20 justify-center items-center">
     <button (click)="open()" type="button"
-      class="bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-xl shadow-md transition block text-center poppins-semibold">
+      class="inline-flex items-center gap-2 rounded-md bg-purple-700 px-4 py-2
+             text-sm font-medium text-white hover:bg-purple-800 transition">
       Registrar Asistencia
     </button>
   </div>
 
 </div>
+<!-- <div id="modal_agg_titulada" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+
+    <div class="w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+
+        <header class="flex items-center justify-between px-6 py-4 bg-gray-100 border-b border-gray-200">
+            <h3 class="text-xl font-bold text-gray-700">Agregar Titulada</h3>
+            <button class="p-1 text-gray-400 hover:text-gray-600 transition-colors rounded-full hover:bg-gray-200" aria-label="close">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </header>
+
+        <section class="p-6">
+            <form action="./php/guardar_titulada.php" method="POST" autocomplete="off" id="modal-tituladas" class="space-y-4">
+
+                <div class="flex flex-col gap-2">
+                    <label for="nombre_titulada" class="text-sm font-bold text-gray-600">Nombre Titulada:</label>
+                    <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                           type="text" name="nombre_titulada" pattern="[0-9a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" required>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="ficha" class="text-sm font-bold text-gray-600">Ficha Titulada:</label>
+                    <input class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                           type="text" name="ficha" pattern="[0-9]{3,10}" required>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="jornada" class="text-sm font-bold text-gray-600">Jornada</label>
+                    <div class="relative">
+                        <select name="jornada" class="w-full px-3 py-2 border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                            <option value="Mañana">Mañana</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noche">Noche</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="mt-8 pt-6 border-t border-gray-100 flex justify-center">
+                    <button type="submit" class="flex items-center gap-2 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-full shadow-lg shadow-blue-200 transition-all transform active:scale-95">
+                        <img src="./images/iconos/save-icon-b.svg" class="w-5 h-5 drop-shadow-sm" alt="">
+                        Agregar
+                    </button>
+                </footer>
+            </form>
+        </section>
+    </div>
+</div> -->
