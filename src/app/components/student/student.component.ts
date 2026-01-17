@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,8 +8,9 @@ import { Curso, Student, TablasEstudiantes, TablasFiltrosEstudiantes, Teacher } 
 import { EstudentsService } from './service/estudiantes.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, count, of } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RegisterStudentsComponent } from './register-students/register-students.component';
+import { VerComponent } from './ver/ver.component';
 @Component({
   selector: 'app-student',
   standalone: true,
@@ -27,7 +28,8 @@ export class StudentComponent implements OnInit {
   filtros: string = '';
 
   constructor(private estudiantesService: EstudentsService, private snackbar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+
   ) { }
   ngOnInit(): void {
     this.buscarEstudiantes()
@@ -87,4 +89,14 @@ export class StudentComponent implements OnInit {
     });
   }
 
+  ver( students :  Student ) {
+    this.dialog.open( VerComponent , {
+      data : students ,
+      disableClose : true,
+      width : '500px'
+    });
+  }
+  // ver(student: Student) {
+  //   console.log('Ver detalles del estudiante:', student);
+  // }
 }

@@ -1,0 +1,46 @@
+
+<div class="bg-white rounded shadow-md poppins-medium p-6 w-full max-w-4xl">
+  <div mat-dialog-title class=" flex items-center text-center mb-2">
+    <h2>Detalles del Estudiante</h2>
+    <p class="text-sm md:text-base opacity-50 text-gray-400 mt-2"> ver la informacion de usuario</p>
+  </div>
+  <div class="bg-white poppins-medium p-6 w-full max-w-4xl">
+    <!-- formulario para cewr la data registrada -->
+    <form mat-dialog-content class="space-y-4">
+      <p><strong>Nombre:</strong> {{ data.name }}</p>
+      <p><strong>Cédula:</strong> {{ data.cedula }}</p>
+      <p><strong>Email:</strong> {{ data.email }}</p>
+
+      <!-- Cursos -->
+      <ng-container *ngIf="tieneCursos(); else sinCursos">
+        <p><strong>Cursos:</strong></p>
+        <ul class="ml-4 list-disc">
+          <li *ngFor="let curso of data.cursos">{{ curso }}</li>
+        </ul>
+      </ng-container>
+
+      <!-- Profesor -->
+      <ng-container *ngIf="tieneProfesor(); else sinProfesor">
+        <p><strong>Profesor:</strong></p>
+        <ul class="ml-4 list-disc">
+          <li *ngFor="let profesor of data.teacher">{{ profesor }}</li>
+        </ul>
+      </ng-container>
+    </form>
+
+<!-- Templates para else -->
+<ng-template #sinCursos>
+  <p><strong>Cursos:</strong> No hay cursos registrados</p>
+</ng-template>
+
+<ng-template #sinProfesor>
+  <p><strong>Profesor:</strong> No hay profesor asignado</p>
+</ng-template>
+  </div>
+  <div mat-dialog-actions class=" flex justify-end space-x-4 font-medium p-2">
+    <button mat-dialog-close
+    class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-red-600 hover:bg-gray-300 transition ">
+      Cerrar
+    </button>
+  </div>
+</div>
