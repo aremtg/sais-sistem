@@ -26,6 +26,13 @@ export const Dashboard: Routes = [
           ),
       },
       {
+        path: 'teachers',
+        loadComponent: () =>
+          import('../../teacher/teacher.component').then(
+            (m) => m.TeacherComponent
+          ),
+      },
+      {
         path: 'users',
         loadComponent: () =>
           import('../../usuarios/usuarios.component').then(
