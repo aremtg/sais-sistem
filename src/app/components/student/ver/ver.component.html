@@ -7,9 +7,11 @@
   <div class="bg-white poppins-medium p-6 w-full max-w-4xl">
     <!-- formulario para cewr la data registrada -->
     <form mat-dialog-content class="space-y-4">
-      <p><strong>Nombre:</strong> {{ data.name }}</p>
       <p><strong>Cédula:</strong> {{ data.cedula }}</p>
-      <p><strong>Email:</strong> {{ data.email }}</p>
+      <p><strong>Nombre:</strong> {{ data.name }}</p>
+      <p><strong>Apellido:</strong> {{ data.lastname }}</p>
+      <p><strong>Correo Electronico:</strong> {{ data.email }}</p>
+      <p><strong>Telefono:</strong> {{ data.telefono }}</p>
 
       <!-- Cursos -->
       <ng-container *ngIf="tieneCursos(); else sinCursos">
