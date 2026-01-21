@@ -4,14 +4,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Curso, Student, Students, TablasFiltrosEstudiantes, Teacher } from './interface/sutdents.interface';
+import { Curso, EditStudents, Student, Students, TablasFiltrosEstudiantes, Teacher } from './interface/sutdents.interface';
 import { EstudentsService } from './service/estudiantes.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, of } from 'rxjs';
 import {  MatDialog } from '@angular/material/dialog';
 import { RegisterStudentsComponent } from './register-students/register-students.component';
 import { VerComponent } from './ver/ver.component';
-import { DialogRef } from '@angular/cdk/dialog';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 @Component({
   selector: 'app-student',
@@ -100,13 +99,14 @@ export class StudentComponent implements OnInit {
   }
 
   edit( student: Students) {
+
     const DialogRef =  this.dialog.open(EditStudentComponent,{
       data : { ...student } ,
       disableClose : true,
     });
     DialogRef.afterClosed().subscribe( result => {
-      if ( result ?.sussess ) {
-        this.snackbar.open( result.message , 'Cerrar' , { duration : 2000 });
+      if (result?.success) {
+        this.snackbar.open(result.message , 'Cerrar',{ duration : 2000});
       }
       this.buscarEstudiantes();
     });

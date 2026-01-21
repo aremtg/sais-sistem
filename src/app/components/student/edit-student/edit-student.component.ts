@@ -21,30 +21,31 @@ export class EditStudentComponent {
      @Inject(MAT_DIALOG_DATA) public data : Students,
      private snackbar  :MatSnackBar,
      private dialogRef : MatDialogRef<EditStudentComponent>
-
    ) {
     this.edit = fb.group({
-      cedula : [ this.data.cedula ] ,
-      name   : [ this.data.name ] ,
-      lastname : [ this.data.lastname ] ,
-      telefono : [ this.data.telefono ] ,
-      email    : [ this.data.email ] ,
+      cedula :   [data.cedula ] ,
+      name   :   [data.name ] ,
+      lastname : [data.lastname ] ,
+      telefono : [data.telefono ] ,
+      email    : [data.email ] ,
     })
    }
-
    guardarCambios() {
     if (this.edit.invalid) {
       this.snackbar.open('Por favor, complete todos los campos correctamente.', 'Cerrar', { duration: 3000 });
       return;
     }
     const updatedStudent: EditStudents  = {
-      ...this.data,
-      ...this.edit.value
+     cedula: this.edit.value.cedula,
+      name: this.edit.value.name,
+      lastname: this.edit.value.lastname,
+      telefono: this.edit.value.telefono,
+      email: this.edit.value.email
     }
     this.estudiantesService.updateStudent(this.data.id, updatedStudent).subscribe({
       next: (resp) => {
+        this.dialogRef.close(); // Cerrar el diálogo y pasar true para indicar éxito
         this.snackbar.open(resp.message, 'Cerrar', { duration: 3000 });
-        // this.dialogRef.close(true); // Cerrar el diálogo y pasar true para indicar éxito
       },
       error: (err) => {
         this.snackbar.open(err.message, 'Cerrar', { duration: 3000 });

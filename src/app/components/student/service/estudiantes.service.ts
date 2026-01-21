@@ -44,6 +44,8 @@ export class EstudentsService {
   // ----------------actualizar estudiante ------------------------
   updateStudent( id : string ,    student : EditStudents ) : Observable<Update> {
     return this.http.patch<Update>(`${api}students/${id}`, student).pipe(
+
+
       catchError( error => this.catcherror.handleError(error))
     );
   }
