@@ -3,14 +3,14 @@ import { EstudentsService } from '../service/estudiantes.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DialogModule } from '@angular/cdk/dialog';
-import { MatDialogRef, MatDialogTitle, MatDialogClose, MatDialogContent } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Curso } from '../interface/sutdents.interface';
 
 @Component({
   selector: 'app-register-students',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, DialogModule, MatDialogTitle, MatDialogClose, MatDialogContent],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, DialogModule],
   templateUrl: './register-students.component.html',
   styleUrl: './register-students.component.scss'
 })

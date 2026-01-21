@@ -109,3 +109,41 @@ export interface Curso {
   codigo:      string;
 }
 
+// --------actulizar estudiante ----
+export interface Update {
+  message: string;
+  student: Students;
+  userId:  UserID;
+}
+
+export interface Students {
+  id:         string;
+  cedula:     string;
+  name:       string;
+  lastname:   string;
+  telefono:   string;
+  email:      string;
+  isActive:   boolean;
+  createdAt:  Date;
+  updatedAt:  Date;
+  deletedAt:  null;
+  teacher_id: null;
+  teacher:    null;
+  createdBy:  string;
+  updatedBy:  null | string;
+  deletedBy:  null;
+}
+
+export interface UserID {
+  id:            string;
+  lastcreatedAt: Date;
+}
+
+// ----editar campos de estudiante ----
+export interface EditStudents {
+  cedula?:   string;
+  name?:     string;
+  lastname?: string;
+  telefono?: string;
+  email?:    string;
+}

@@ -1,14 +1,14 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Curso, Student, TablasEstudiantes, TablasFiltrosEstudiantes, Teacher } from './interface/sutdents.interface';
+import { Curso, Student, Students, TablasFiltrosEstudiantes, Teacher } from './interface/sutdents.interface';
 import { EstudentsService } from './service/estudiantes.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError, count, of } from 'rxjs';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { catchError, of } from 'rxjs';
+import {  MatDialog } from '@angular/material/dialog';
 import { RegisterStudentsComponent } from './register-students/register-students.component';
 import { VerComponent } from './ver/ver.component';
 import { DialogRef } from '@angular/cdk/dialog';
@@ -99,14 +99,13 @@ export class StudentComponent implements OnInit {
     });
   }
 
-  edit( student: Student) {
+  edit( student: Students) {
     const DialogRef =  this.dialog.open(EditStudentComponent,{
-      data : student,
+      data : { ...student } ,
       disableClose : true,
-      width : '500px'
     });
     DialogRef.afterClosed().subscribe( result => {
-      if ( result ) {
+      if ( result ?.sussess ) {
         this.snackbar.open( result.message , 'Cerrar' , { duration : 2000 });
       }
       this.buscarEstudiantes();
