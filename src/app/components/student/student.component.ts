@@ -11,6 +11,8 @@ import { catchError, count, of } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RegisterStudentsComponent } from './register-students/register-students.component';
 import { VerComponent } from './ver/ver.component';
+import { DialogRef } from '@angular/cdk/dialog';
+import { EditStudentComponent } from './edit-student/edit-student.component';
 @Component({
   selector: 'app-student',
   standalone: true,
@@ -95,6 +97,21 @@ export class StudentComponent implements OnInit {
       disableClose : true,
       width : '500px'
     });
+  }
+
+  edit( student: Student) {
+    const DialogRef =  this.dialog.open(EditStudentComponent,{
+      data : student,
+      disableClose : true,
+      width : '500px'
+    });
+    DialogRef.afterClosed().subscribe( result => {
+      if ( result ) {
+        this.snackbar.open( result.message , 'Cerrar' , { duration : 2000 });
+      }
+      this.buscarEstudiantes();
+    });
+
   }
   // ver(student: Student) {
   //   console.log('Ver detalles del estudiante:', student);

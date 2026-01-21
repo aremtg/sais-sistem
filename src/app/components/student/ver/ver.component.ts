@@ -18,7 +18,6 @@ export class VerComponent {
 
 
   constructor( private snackbar: MatSnackBar ,
-    // private dialogRef : DialogRef<VerComponent>,
     @Inject(MAT_DIALOG_DATA) public data : Student ,
     private fb : FormBuilder,
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../enviroments/api-local';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Curso, ListadoCursos, ListadoProfesores, RegisterStudents, TablasEstudiantes, TablasFiltrosEstudiantes, Teacher } from '../interface/sutdents.interface';
+import { Curso, ListadoCursos, ListadoProfesores, RegisterStudents, Student, TablasEstudiantes, TablasFiltrosEstudiantes, Teacher } from '../interface/sutdents.interface';
 import { catchError, Observable } from 'rxjs';
 import { CatchError } from '../../../shared/error/catchError';
 const api = environment.apiUrl
@@ -32,9 +32,19 @@ export class EstudentsService {
   }
   // listado de profesores
   listadoprofes() :  Observable<ListadoProfesores> {
-    return this.http.get<ListadoProfesores>(`${api}students/teachers/all`)
+    return this.http.get<ListadoProfesores>(`${api}students/teachers/all`).pipe(
+    catchError( error => this.catcherror.handleError(error))
+    );
   }
   listadocursos() : Observable<ListadoCursos> {
-    return this.http.get<ListadoCursos>(`${api}students/cursos/all`)
+    return this.http.get<ListadoCursos>(`${api}students/cursos/all`).pipe(
+      catchError( error => this.catcherror.handleError(error))
+    );
+  }
+  // ----------------actualizar estudiante ------------------------
+  updateStudent( id :  string ,  student : Student){
+    return this.http.put<RegisterStudents>(`${api}students/${id}`, student).pipe(
+      catchError( error => this.catcherror.handleError(error))
+    );
   }
 }
