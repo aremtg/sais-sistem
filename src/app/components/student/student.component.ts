@@ -112,8 +112,8 @@ export class StudentComponent implements OnInit {
     });
 
   }
-  eliminarstudent( id : string){
-    confirm( )
-  }
+
+  deleteData(){}
+
 
 }
