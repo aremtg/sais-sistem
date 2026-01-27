@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-fromlogin! : FormGroup;
+  hidePassword : boolean = true;
+  fromlogin! : FormGroup;
   constructor( private authService: AuthService ,
      private snackbar: MatSnackBar ,
      private fb :  FormBuilder ,
@@ -46,6 +47,9 @@ fromlogin! : FormGroup;
         this.snackbar.open(err.message,'Close', { duration: 3000 });
       }
     });
+   }
+   Hidepasswords(){
+    this.hidePassword = !this.hidePassword;
    }
 
 }
