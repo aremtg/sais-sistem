@@ -12,6 +12,8 @@ import {  MatDialog } from '@angular/material/dialog';
 import { RegisterStudentsComponent } from './register-students/register-students.component';
 import { VerComponent } from './ver/ver.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
+import { DialogRef } from '@angular/cdk/dialog';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 @Component({
   selector: 'app-student',
   standalone: true,
@@ -113,7 +115,17 @@ export class StudentComponent implements OnInit {
 
   }
 
-  deleteData(){}
+  deleteData(students: Student) {
+
+    const DialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: students,
+      disableClose: true
+    });
+    DialogRef.afterClosed().subscribe(resp => {
+      this.snackbar.open(resp.message, 'Cerrar', { duration: 2000 });
+      this.buscarEstudiantes();
+    })
+  }
 
 
 }
