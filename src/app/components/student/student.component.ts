@@ -112,7 +112,8 @@ export class StudentComponent implements OnInit {
     });
 
   }
-  // ver(student: Student) {
-  //   console.log('Ver detalles del estudiante:', student);
-  // }
+  eliminarstudent( id : string){
+    confirm( )
+  }
+
 }

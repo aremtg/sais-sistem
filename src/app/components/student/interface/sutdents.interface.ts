@@ -18,24 +18,12 @@ export interface Student {
   teacher_id: null;
   teacher:    null;
   cursos:     any[];
-  objetos:    Objeto[];
   createdBy:  string;
   updatedBy:  null | string;
   deletedBy:  null;
   usuario:    Usuario[];
 }
 
-export interface Objeto {
-  id:          string;
-  nombre:      string;
-  descripcion: string;
-  vehiculo:    string;
-  articulos:   string;
-  isActive:    boolean;
-  createdAt:   Date;
-  updatedAt:   Date;
-  student_id:  string;
-}
 
 export interface Usuario {
   createbyuser?: Createbyuser;
@@ -131,7 +119,7 @@ export interface Students {
   teacher:    null;
   createdBy:  string;
   updatedBy:  null | string;
-  deletedBy:  null;
+  deletedBy:  null | string;
 }
 
 export interface UserID {
@@ -146,4 +134,22 @@ export interface EditStudents {
   lastname?: string;
   telefono?: string;
   email?:    string;
+}
+// --------eliminar estudiante ------
+export interface DeleteStudent {
+  message:   string;
+  eliminado: Eliminado;
+}
+
+export interface Eliminado {
+  id:       string;
+  name:     string;
+  lastname: string;
+  cedula:   string;
+  userId:   UserID;
+}
+
+export interface UserID {
+  id:            string;
+  lastdeletedAt: Date;
 }
