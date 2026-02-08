@@ -5,10 +5,11 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { CommonModule } from '@angular/common';
 import { Login } from '../../interface/login.interface';
 import { Router } from '@angular/router';
+import { FooterComponent } from "../../../shared/footer/footer.component";
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ ReactiveFormsModule , CommonModule , FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, FooterComponent],
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
