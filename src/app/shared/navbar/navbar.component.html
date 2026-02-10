@@ -1,48 +1,56 @@
-<nav class=" flex justify-between h-full poppins-medium px-5">
+<nav class="flex justify-between items-center h-16 poppins-medium px-5 bg-white shadow sticky top-0 z-50">
+
+  <!-- LOGO -->
   <div class="flex items-center">
-    <a routerLink="sistema/dashboard" class="text-2xl font-bold">
+    <a routerLink="sistema/dashboard">
       <h1 class="text-4xl poppins-extrabold mb-1">
-        SA<span class="text-purple-800 ">IS</span>
+        SA<span class="text-purple-800">IS</span>
       </h1>
     </a>
   </div>
-  <div class="flex justify-center h-full">
-    <ul class="flex py-0 my-1 text-lg gap-20 items-center">
-      <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="home" routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1" class="inline-flex transition-transform duration-300">
-          <img src="home.svg" alt="home" class="h-7" />
-        </a>
 
-        <span
-          class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap">
+  <!-- ================= DESKTOP MENU ================= -->
+  <div class="hidden md:flex justify-center h-full">
+    <ul class="flex py-0 my-1 text-lg gap-20 items-center">
+
+      <!-- HOME -->
+      <li class="relative group flex flex-col items-center cursor-pointer">
+        <a routerLink="home"
+           routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1">
+          <img src="home.svg" class="h-7" />
+        </a>
+        <span class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1">
           Inicio
         </span>
       </li>
 
+      <!-- ESTUDIANTES -->
       <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="students"  routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1"
-          class=" inline-flex transition-transform duration-300">
-          <img src="estudiantes.svg" alt="estudiantes" class="h-7" />
+        <a routerLink="students"
+           routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1">
+          <img src="estudiantes.svg" class="h-7" />
         </a>
-        <span
-          class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap">
+        <span class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1">
           Estudiantes
         </span>
       </li>
+
+      <!-- CURSOS -->
       <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="courses"  routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1"
-          class="inline-flex transition-transform duration-300">
-          <img src="cursos.svg" alt="cursos" class="h-7" />
+        <a routerLink="courses"
+           routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1">
+          <img src="cursos.svg" class="h-7 " />
         </a>
-        <span
-          class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap">
+        <span class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1">
           Cursos
         </span>
       </li>
+
+      <!-- PROFESORES -->
       <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="teachers"  routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1"
-          class="inline-flex transition-transform duration-300">
-          <svg fill="#000000" height="24px" width="24px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+        <a routerLink="teachers"
+           routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1">
+         <svg fill="#000000" height="24px" width="24px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 489.38 489.38" xml:space="preserve">
             <g id="XMLID_129_">
               <path id="XMLID_134_" d="M473.725,5.656H213.576c-8.655,0-15.655,7.022-15.655,15.664v110.484l11.319-13.234
@@ -69,47 +77,78 @@
             </g>
           </svg>
         </a>
-        <span
-          class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap">
+        <span class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1">
           Profesores
         </span>
       </li>
 
+      <!-- USUARIOS -->
       <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="users"  routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1"
-          class="inline-flex transition-transform duration-300">
-          <img src="usuarios.svg" alt="usuarios" class="h-7" />
+        <a routerLink="users"
+           routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1">
+          <img src="usuarios.svg" class="h-7" />
         </a>
-        <span
-          class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap">
+        <span class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1">
           Usuarios
         </span>
       </li>
+
     </ul>
   </div>
-  <div class="relative flex items-center poppins-bold ">
-    <button (click)="toggleDropdown('headerUser')" class="flex items-center space-x-2 focus:outline-none">
-      <div class="text-center">
-        <div class="text-sm  text-gray-800">{{username}}</div>
-        <div class="text-xs text-gray-600">{{rolesusername}}</div>
+
+  <!-- ================= USUARIO DESKTOP ================= -->
+  <div class="hidden md:flex relative items-center poppins-bold">
+    <button (click)="toggleDropdown('headerUser')" class="flex items-center space-x-2">
+      <div class="text-right">
+        <div class="text-sm">{{ username }}</div>
+        <div class="text-xs text-gray-600">{{ rolesusername }}</div>
       </div>
-      <mat-icon [class.rotate-180]="dropdowns['headerUser']"
-        class="transition-transform duration-300 hover:bg-white rounded-full">
-        expand_more
-      </mat-icon>
+      <mat-icon [class.rotate-180]="dropdowns['headerUser']">expand_more</mat-icon>
     </button>
-    <!-- Dropdown menu -->
-    <div class="absolute right-0 top-full mt-3 w-48 bg-white rounded-lg shadow-lg py-2 z-50"
-      [class.hidden]="!dropdowns['headerUser']">
-      <a routerLink="Auth/ver-perfil" class="flex items-center px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer">
-        <mat-icon class="mr-3 text-gray-600">account_circle</mat-icon>
-        Mi Perfil
-      </a>
+
+    <div class="absolute right-0 top-full mt-3 w-48 bg-white rounded-lg shadow-lg py-2"
+         [class.hidden]="!dropdowns['headerUser']">
+      <a routerLink="Auth/ver-perfil" class="block px-4 py-2 hover:bg-gray-100">Mi Perfil</a>
       <div class="border-t my-1"></div>
-      <a (click)="logout()" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer">
-        <mat-icon class="mr-3">logout</mat-icon>
-        Cerrar Sesión
-      </a>
+      <a (click)="logout()" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Cerrar Sesión</a>
     </div>
   </div>
+
+  <!-- ================= MOBILE BUTTON ================= -->
+  <button class="md:hidden text-3xl" (click)="toggleMenu()">☰</button>
+
 </nav>
+
+<!-- Overlay -->
+<div *ngIf="isopen"
+     class="fixed inset-0 bg-black/40 z-40"
+     (click)="toggleMenu()"></div>
+
+<!-- Drawer -->
+<aside class="fixed top-0 left-0 h-full w-72 bg-white shadow-xl z-50
+              transform transition-transform duration-300 md:hidden"
+       [class.translate-x-0]="isopen"
+       [class.-translate-x-full]="!isopen">
+
+  <div class="p-4 border-b flex justify-between">
+    <h2 class="text-xl font-bold">Menú</h2>
+    <button (click)="toggleMenu()">✕</button>
+  </div>
+
+  <ul class="flex flex-col gap-4 p-4">
+    <li><a routerLink="home" (click)="toggleMenu()">Inicio</a></li>
+    <li><a routerLink="students" (click)="toggleMenu()">Estudiantes</a></li>
+    <li><a routerLink="courses" (click)="toggleMenu()">Cursos</a></li>
+    <li><a routerLink="teachers" (click)="toggleMenu()">Profesores</a></li>
+    <li><a routerLink="users" (click)="toggleMenu()">Usuarios</a></li>
+  </ul>
+
+  <div class="border-t p-4">
+    <div class="text-sm font-bold">{{ username }}</div>
+    <div class="text-xs text-gray-500 mb-3">{{ rolesusername }}</div>
+    <a routerLink="Auth/ver-perfil" class="block py-2">Mi Perfil</a>
+    <button (click)="logout()" class="text-red-600 py-2">Cerrar Sesión</button>
+  </div>
+
+</aside>
+
