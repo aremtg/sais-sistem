@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon'
+import { MatTooltip } from "@angular/material/tooltip";
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, CommonModule, RouterLinkActive, MatIconModule],
+  imports: [RouterLink, CommonModule, RouterLinkActive, MatIconModule, MatTooltip],
 
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
