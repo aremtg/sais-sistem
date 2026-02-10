@@ -1,5 +1,5 @@
-<nav class="navbar flex justify-between h-full poppins-medium px-5">
-  <div class="logo flex items-center">
+<nav class=" flex justify-between h-full poppins-medium px-5">
+  <div class="flex items-center">
     <a routerLink="sistema/dashboard" class="text-2xl font-bold">
       <h1 class="text-4xl poppins-extrabold mb-1">
         SA<span class="text-purple-800 ">IS</span>
@@ -85,16 +85,6 @@
           Usuarios
         </span>
       </li>
-      <!-- <li class="relative group flex flex-col items-center cursor-pointer">
-        <a routerLink="users" routerLinkActive="flex justify-center border-b-4 border-black w-12 items-center py-1 px-1"
-          class="inline-flex transition-transform duration-300">
-          <img src="permisos.svg" alt="permisos" class="h-7" />
-        </a>
-        <span
-          class="absolute top-10 scale-0 group-hover:scale-100 baseColor text-white text-xs rounded px-2 py-1 transition-transform duration-100 whitespace-nowrap">
-          permisos
-        </span>
-      </li> -->
     </ul>
   </div>
   <div class="relative flex items-center poppins-bold ">
@@ -115,12 +105,6 @@
         <mat-icon class="mr-3 text-gray-600">account_circle</mat-icon>
         Mi Perfil
       </a>
-      <!-- <a
-        class="flex items-center px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
-      >
-        <mat-icon class="mr-3 text-gray-600">settings</mat-icon>
-        Configuración
-      </a> -->
       <div class="border-t my-1"></div>
       <a (click)="logout()" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer">
         <mat-icon class="mr-3">logout</mat-icon>
