@@ -1,12 +1,12 @@
-<div class="flex h-screen flex-col fondo-gradiente">
+<div class="flex min-h-screen flex-col fondo-gradiente">
   <!-- Sidebar -->
-  <div class=" bg-white shadow-xl">
+  <div class=" bg-white sticky top-0 z-50 shadow-xl">
     <app-navbar></app-navbar>
   </div>
-  <div class="flex-1 p-6 overflow-y-auto poppins-regular">
+  <div class="flex-1 p-4 md:p-6 overflow-y-auto poppins-regular">
     <router-outlet></router-outlet>
   </div>
-  <div class="w-full top-0 bg-white ">
+  <div class=" bg-white ">
     <app-footer></app-footer>
   </div>
 </div>
