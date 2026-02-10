@@ -9,10 +9,11 @@ import { catchError, count, of } from 'rxjs';
 import { Roles } from './enum/rol.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { RegistroUsersComponent } from './registro-users/registro-users.component';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [MatTooltipModule, CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [MatTooltipModule, CommonModule, ReactiveFormsModule, FormsModule , MatIconModule],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
 })

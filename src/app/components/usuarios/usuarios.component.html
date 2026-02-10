@@ -4,7 +4,7 @@
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
-        <h1 class="text-2xl font-semibold text-gray-800">
+        <h1 class="text-2xl md:text-3xl font-semibold text-gray-800">
           Módulo de usuarios del sistema
         </h1>
         <p class="text-sm text-gray-500">
@@ -12,9 +12,12 @@
         </p>
       </div>
 
-      <button (click)="registrar()" class="inline-flex items-center gap-2 rounded-md bg-purple-700 px-4 py-2
-             text-sm font-medium text-white hover:bg-purple-800 transition" matTooltip="Registrar nuevo usuarios">
-        + Registrar Usuarios
+      <button (click)="registrar()" class="inline-flex items-center justify-center gap-2 w-full md:w-auto
+                 rounded-md bg-purple-700 px-5 py-2.5
+                 text-sm font-medium text-white
+                 hover:bg-purple-800
+                 transition" matTooltip="Registrar nuevo usuarios"> <span>+</span>
+        Registrar Usuarios
       </button>
     </div>
 
@@ -25,14 +28,15 @@
           <label class="block text-sm font-medium text-gray-700 mb-1">
             Buscar
           </label>
-          <div class="flex gap-4">
-            <input [(ngModel)]="filtro" type="text" placeholder="Buscar usuario , email"
-              class="flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600" />
-            <button type="submit" (click)="buscar()"
-              class="rounded-md bg-purple-700 px-5 py-2 text-sm font-medium text-white hover:bg-purple-800 transition whitespace-nowrap"
-              matTooltip="Buscar">
-              Buscar
-            </button>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <div class="relative flex-1">
+              <mat-icon class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">search</mat-icon>
+              <input (keyup)="buscar()" [(ngModel)]="filtro" type="text" placeholder="Buscar usuario , email"
+                class="w-full rounded-md border border-gray-300
+                 pl-10 pr-3 py-2 text-sm
+                 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600
+                 transition" />
+            </div>
           </div>
         </div>
         <!-- Roles -->
