@@ -14,10 +14,11 @@ import { VerComponent } from './ver/ver.component';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { DialogRef } from '@angular/cdk/dialog';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-student',
   standalone: true,
-  imports: [MatTooltipModule, MatSelectModule, ReactiveFormsModule, CommonModule, MatFormFieldModule, FormsModule],
+  imports: [MatTooltipModule, MatSelectModule, ReactiveFormsModule, CommonModule, MatFormFieldModule, FormsModule , MatIconModule],
   templateUrl: './student.component.html',
   styleUrl: './student.component.scss'
 })
