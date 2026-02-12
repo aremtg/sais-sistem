@@ -65,7 +65,7 @@ export class UsuariosComponent implements OnInit {
         return of({ message: 'no hay datos', usuarios: [], total: 0, page: 1, limit: 10 });
       }
     ))
-      .subscribe((resp: Tablas) => {
+      .subscribe((resp) => {
         this.usuarios = resp.usuarios;
         this.total = resp.total;
         this.page = resp.page;
