@@ -23,20 +23,11 @@ export class UsuariosComponent implements OnInit {
   total: number = 0;
   page: number = 1;
   limit: number = 10;
-
   totalPages: number = 0;
   startItem: number = 0;
   endItem: number = 0;
-
-
-
-
   usuarios: Usuario[] = [];
   filtro: string = '';
-  // page : number = 1;
-  // limit : number = 10;
-  // total : number = 0;
-
   filtroRol: string = '';
   Active: string[] = ['ACTIVO', 'INACTIVO']
   role = Object.values(Roles)

@@ -45,7 +45,6 @@ export interface tablasfitros{
   role ? :  string;
   page: number;
   limit: number;
-  // total: number;
 }
 // -------registrar usuaarios----------------------
 export interface Register {

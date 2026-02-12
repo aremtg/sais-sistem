@@ -42,7 +42,7 @@ export class AuthService {
     let params = new HttpParams();
     Object.entries(filtros).forEach(([key, values]) => {
       if (values === undefined && values === null) { return; }
-      if ( typeof values === 'string' && values.trim()  && values !== '') {
+      if (typeof values === 'string' && values.trim() && values !== '') {
         params = params.set(key, values.toString());
       }
       if (typeof values === 'number') {
