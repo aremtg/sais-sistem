@@ -22,9 +22,9 @@ export interface Usuario {
 export interface Tablas {
   message:  string;
   usuarios: Usuario[];
+  total:    number;
   page:     number;
   limit:    number;
-  total:    number;
 }
 
 export interface Usuario {
@@ -32,10 +32,12 @@ export interface Usuario {
   cedula:    string;
   nombre:    string;
   email:     string;
+  imagen:    null ;
   role:      string;
   isActive:  boolean;
   createdAt: Date;
 }
+
 // ------------------------------------------------------------
 export interface tablasfitros{
   cedula?:    string;

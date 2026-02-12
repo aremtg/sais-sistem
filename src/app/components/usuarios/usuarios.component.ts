@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { tablasfitros, Usuario } from '../../auth/interface/login.interface';
+import { Tablas, tablasfitros, Usuario } from '../../auth/interface/login.interface';
 import { AuthService } from '../../auth/service/authService.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,23 +13,35 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [MatTooltipModule, CommonModule, ReactiveFormsModule, FormsModule , MatIconModule],
+  imports: [MatTooltipModule, CommonModule, ReactiveFormsModule, FormsModule, MatIconModule],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.scss'
 })
 export class UsuariosComponent implements OnInit {
 
+  // usuarios: Usuario[] = [];
+  total: number = 0;
+  page: number = 1;
+  limit: number = 10;
+
+  totalPages: number = 0;
+  startItem: number = 0;
+  endItem: number = 0;
+
+
 
 
   usuarios: Usuario[] = [];
   filtro: string = '';
-  page : number = 1;
-  limit : number = 10;
-  total : number = 0;
+  // page : number = 1;
+  // limit : number = 10;
+  // total : number = 0;
+
   filtroRol: string = '';
-  Active :  string[] = ['ACTIVO' , 'INACTIVO']
+  Active: string[] = ['ACTIVO', 'INACTIVO']
   role = Object.values(Roles)
   register!: FormGroup;
+  Math: any;
   constructor(
     private authService: AuthService,
     private snackbar: MatSnackBar,
@@ -39,41 +51,54 @@ export class UsuariosComponent implements OnInit {
     this.buscar()
   }
   buscar() {
-    let busqueda: tablasfitros = {
+
+    const busqueda: tablasfitros = {
       email: '',
       cedula: '',
       role: '',
-      // total: this.page * this.limit,
       page: this.page,
       limit: this.limit
     };
-    if (this.filtro && this.filtro.trim() !== '') {
-      const terminolimpio = this.filtro.trim().toLowerCase();
-      if (terminolimpio.includes('@')) {
-        busqueda.email = terminolimpio;
-      } else {
-        busqueda.cedula = terminolimpio;
+    if (this.filtro?.trim()) {
+      const termino = this.filtro.trim().toLowerCase();
+      termino.includes('@')
+        ? busqueda.email = termino
+        : busqueda.cedula = termino;
+    }
+
+    if (this.filtroRol?.trim()) {
+      busqueda.role = this.filtroRol.toUpperCase();
+    }
+    this.authService.getfilter(busqueda).pipe(
+      catchError(error => {
+        this.snackbar.open(error.message, 'Cerrar', { duration: 3000 });
+        return of({ message: 'no hay datos', usuarios: [], total: 0, page: 1, limit: 10 });
       }
-    }
-    if (this.filtroRol && this.filtroRol.trim() !== '') {
-      busqueda.role = this.filtroRol.toLocaleUpperCase();
-    }
-    if (this.filtroRol && this.filtroRol.trim() !== '') {
-      busqueda.role = this.filtroRol.toLocaleUpperCase();
-    }
-    this.authService.getfilter(busqueda)
-      .pipe(
-        catchError((error) => {
-          this.snackbar.open(error.message, 'Cerrar', { duration: 1000 });
-          return of({ usuarios: [], count: 0 });
-        })
-      )
-      .subscribe((resp) => {
-        this.usuarios = resp.usuarios || [];
-        
-      }
-      );
+    ))
+      .subscribe((resp: Tablas) => {
+        this.usuarios = resp.usuarios;
+        this.total = resp.total;
+        this.page = resp.page;
+        this.limit = resp.limit;
+        this.totalPages = Math.ceil(this.total / this.limit);
+        this.startItem = (this.page - 1) * this.limit + 1;
+        this.endItem = Math.min(this.page * this.limit, this.total);
+
+      });
+
   }
+  irAPagina(pagina: number) {
+    if (pagina < 1 || pagina > this.totalPages) return;
+
+    this.page = pagina;
+    this.buscar();
+  }
+  cambiarLimit(event: any) {
+    this.limit = Number(event.target.value);
+    this.page = 1;
+    this.buscar();
+  }
+  //  filtros de busqueda
   limpiarfiltros() {
     this.filtro = '';
     this.filtroRol = '';
@@ -96,4 +121,5 @@ export class UsuariosComponent implements OnInit {
       this.buscar();
     })
   }
+
 }

@@ -30,9 +30,9 @@
           </label>
           <div class="flex flex-col sm:flex-row gap-2">
             <div class="relative flex-1">
-              <mat-icon class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">search</mat-icon>
-              <input (keyup)="buscar()" [(ngModel)]="filtro" type="text" placeholder="Buscar usuario , email"
-                class="w-full rounded-md border border-gray-300
+              <mat-icon
+                class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">search</mat-icon>
+              <input (keyup)="buscar()" [(ngModel)]="filtro" type="text" placeholder="Buscar usuario , email" class="w-full rounded-md border border-gray-300
                  pl-10 pr-3 py-2 text-sm
                  focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600
                  transition" />
@@ -101,6 +101,33 @@
         </tbody>
       </table>
       <p *ngIf="usuarios.length === 0">No hay datos registrados de usuarios</p>
+      <!-- Paginación -->
+      <div *ngIf="total > 0" class="flex flex-col md:flex-row justify-between items-center p-4 gap-3">
+        <div class="text-sm text-gray-600">
+          Mostrando {{ startItem }} - {{ endItem }} de {{ total }} registros
+        </div>
+        <div>
+          <label class="mr-2 text-sm">Registros:</label>
+          <select [value]="limit" (change)="cambiarLimit($event)" class="border px-2 py-1 rounded text-sm">
+            <option value="2">2</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+        <div class="flex items-center p-4 gap-2">
+          <button (click)="irAPagina(page - 1)" [disabled]="page === 1" class="px-3 py-1 border rounded disabled:opacity-50">
+            Anterior
+          </button>
+          <span class="text-sm">
+            Página {{ page }} de {{ totalPages }}
+          </span>
+          <button (click)="irAPagina(page + 1)" [disabled]="page === totalPages"
+            class="px-3 py-1 border rounded disabled:opacity-50">
+            Siguiente
+          </button>
+        </div>
+      </div>
     </div>
-
   </div>
