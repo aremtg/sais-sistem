@@ -51,7 +51,6 @@ export class UsuariosComponent implements OnInit {
     this.buscar()
   }
   buscar() {
-
     const busqueda: tablasfitros = {
       email: '',
       cedula: '',
@@ -85,7 +84,6 @@ export class UsuariosComponent implements OnInit {
         this.endItem = Math.min(this.page * this.limit, this.total);
 
       });
-
   }
   irAPagina(pagina: number) {
     if (pagina < 1 || pagina > this.totalPages) return;
