@@ -93,6 +93,10 @@
             <th class="p-3">Curso</th>
             <th class="p-3">Profesor</th>
             <th class="p-3">Usuario</th>
+            <th class="p-3">fecha creacion</th>
+            <th class="p-3">fecha actualizacion</th>
+            <th class="p-3">fecha eliminacion</th>
+
             <th class="p-3 text-center">Acciones</th>
           </tr>
         </thead>
@@ -112,7 +116,26 @@
               <span *ngIf="!students.teacher || students.teacher === 0">Sin registrar profesor</span>
               <span *ngIf="students.teacher && students.teacher > 0">{{ students.teacher }}</span>
             </td>
-            <td class="p-3">{{ students.usuario[0]}}</td>
+
+            <td *ngIf="students.usuario[0].createbyuser?.nombre"  class="p-3">
+              <span *ngIf="!students.usuario[0].createbyuser?.nombre">Sin nombre usuario</span>
+              <span *ngIf="students.usuario[0].createbyuser?.nombre">{{ students.usuario[0].createbyuser?.nombre }}</span>
+            </td>
+            <td *ngIf="students.usuario[0].createbyuser?.createbyuser"  class="p-3">
+              <span *ngIf="!students.usuario[0].createbyuser?.createbyuser">Sin fecha registrado</span>
+              <span *ngIf="students.usuario[0].createbyuser?.createbyuser">{{ students.usuario[0].createbyuser?.createbyuser | date:'dd-MM-yyyy' }}</span>
+            </td>
+
+            <td *ngIf="students.usuario[0].updatebyuser?.updatebyuser"  class="p-3">
+              <span *ngIf="!students.usuario[0].updatebyuser?.updatebyuser">Sin usuario registrado</span>
+              <span *ngIf="students.usuario[0].updatebyuser?.updatebyuser">{{ students.usuario[0].updatebyuser?.updatebyuser | date:'dd-MM-yyyy' }}</span>
+            </td>
+            <td *ngIf="students.usuario[0].deletebyuser?.deletebyuser"  class="p-3">
+              <span *ngIf="!students.usuario[0].deletebyuser?.deletebyuser">Sin usuario registrado</span>
+              <span *ngIf="students.usuario[0].deletebyuser?.deletebyuser">{{ students.usuario[0].deletebyuser?.deletebyuser | date:'dd-MM-yyyy' }}</span>
+            </td>
+
+
 
 
             <td class="p-3 flex justify-center gap-4 ">

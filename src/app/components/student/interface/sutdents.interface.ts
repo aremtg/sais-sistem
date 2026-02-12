@@ -30,6 +30,7 @@ export interface Student {
 export interface Usuario {
   createbyuser?: Createbyuser;
   updatebyuser?: Updatebyuser;
+  deletebyuser?: Deletebyuser;
 }
 
 export interface Createbyuser {
@@ -43,6 +44,12 @@ export interface Updatebyuser {
   nombre:       string;
   updatebyuser: Date;
 }
+export interface Deletebyuser {
+  usuario:      string;
+  nombre:       string;
+  deletebyuser: Date;
+}
+
 // -------------------filtros de la tabla estudiantes ------------------------
 export interface TablasFiltrosEstudiantes {
   cedula?:    string;

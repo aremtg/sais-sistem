@@ -4,7 +4,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Curso, EditStudents, Student, Students, TablasFiltrosEstudiantes, Teacher } from './interface/sutdents.interface';
+import { Curso, EditStudents, Student, Students, TablasFiltrosEstudiantes, Teacher, Usuario } from './interface/sutdents.interface';
 import { EstudentsService } from './service/estudiantes.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, of } from 'rxjs';
@@ -26,6 +26,7 @@ export class StudentComponent implements OnInit {
 
   estudiantes: Student[] = [];
   profesores : Teacher[] = [];
+  usuarios : Usuario[] = [];
   profesorseleccionado : string = '';
   cursoseleccionado : string = '';
   cursos : Curso[] = [];
