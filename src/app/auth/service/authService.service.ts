@@ -41,8 +41,11 @@ export class AuthService {
   getfilter(filtros: tablasfitros) {
     let params = new HttpParams();
     Object.entries(filtros).forEach(([key, values]) => {
-      if (values && values.trim() && values !== undefined && values !== null && values !== ''
-      ) {
+      if (values !== undefined && values !== null) { return; }
+      if ( typeof values === 'string' && values.trim()  && values !== '') {
+        params = params.set(key, values.toString());
+      }
+      if (typeof values === 'number') {
         params = params.set(key, values.toString());
       }
     });

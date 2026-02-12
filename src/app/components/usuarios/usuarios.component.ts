@@ -18,8 +18,14 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './usuarios.component.scss'
 })
 export class UsuariosComponent implements OnInit {
+
+
+
   usuarios: Usuario[] = [];
   filtro: string = '';
+  page : number = 1;
+  limit : number = 10;
+  total : number = 0;
   filtroRol: string = '';
   Active :  string[] = ['ACTIVO' , 'INACTIVO']
   role = Object.values(Roles)
@@ -37,7 +43,9 @@ export class UsuariosComponent implements OnInit {
       email: '',
       cedula: '',
       role: '',
-
+      // total: this.page * this.limit,
+      page: this.page,
+      limit: this.limit
     };
     if (this.filtro && this.filtro.trim() !== '') {
       const terminolimpio = this.filtro.trim().toLowerCase();
@@ -57,14 +65,14 @@ export class UsuariosComponent implements OnInit {
       .pipe(
         catchError((error) => {
           this.snackbar.open(error.message, 'Cerrar', { duration: 1000 });
-          return of({ usuarios: [] , count : 0 });
+          return of({ usuarios: [], count: 0 });
         })
       )
       .subscribe((resp) => {
         this.usuarios = resp.usuarios || [];
+        
       }
       );
-
   }
   limpiarfiltros() {
     this.filtro = '';

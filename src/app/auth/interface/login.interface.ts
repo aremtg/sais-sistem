@@ -22,6 +22,9 @@ export interface Usuario {
 export interface Tablas {
   message:  string;
   usuarios: Usuario[];
+  page:     number;
+  limit:    number;
+  total:    number;
 }
 
 export interface Usuario {
@@ -38,6 +41,9 @@ export interface tablasfitros{
   cedula?:    string;
   email?:     string;
   role ? :  string;
+  page: number;
+  limit: number;
+  // total: number;
 }
 // -------registrar usuaarios----------------------
 export interface Register {
@@ -72,5 +78,6 @@ export interface Perfil {
   updatedAt: Date;
   deletedAt: null;
 }
+
 
 
