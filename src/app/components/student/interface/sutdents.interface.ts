@@ -1,8 +1,10 @@
 
 export interface TablasEstudiantes {
   message:  string;
-  count:    number;
   students: Student[];
+  page : number;
+  limit : number;
+  total : number;
 }
 export interface Student {
   id:         string;
@@ -46,6 +48,8 @@ export interface TablasFiltrosEstudiantes {
   cedula?:    string;
   teacher_id ? :  string;
   curso_id ? :  string;
+  page : number;
+  limit : number;
 }
 // -----registro de estudiantes -----
 export interface RegisterStudents {

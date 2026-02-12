@@ -30,6 +30,12 @@ export class StudentComponent implements OnInit {
   cursoseleccionado : string = '';
   cursos : Curso[] = [];
   filtros: string = '';
+  page : number = 1;
+  limit: number = 10;
+  total : number = 0;
+  totalPages: number = 0;
+  startItem: number = 0;
+  endItem: number = 0;
 
   constructor(private estudiantesService: EstudentsService, private snackbar: MatSnackBar,
     private dialog: MatDialog,
@@ -49,7 +55,10 @@ export class StudentComponent implements OnInit {
     let filtros: TablasFiltrosEstudiantes = {
       cedula: '',
       teacher_id: '',
-      curso_id: ''
+      curso_id: '',
+      page: this.page,
+      limit: this.limit
+
     };
     if (this.filtros && this.filtros.trim() !== '') {
       const terminolimpio = this.filtros.trim().toLowerCase();
@@ -66,13 +75,31 @@ export class StudentComponent implements OnInit {
       .pipe(
         catchError((error) => {
           this.snackbar.open(error.message, 'Cerrar', { duration: 2000 });
-          return of({ count: 0, students: [] });
+          return of({ message: 'no hay datos', students: [], total: 0, page: 1, limit: 10 });
         })
       )
       .subscribe((data) => {
-        this.estudiantes = data.students || [];
+        this.estudiantes = data.students;
+        this.total = data.total;
+        this.page = data.page;
+        this.limit = data.limit;
+        this.totalPages = Math.ceil(this.total / this.limit);
+        this.startItem = (this.page - 1) * this.limit + 1;
+        this.endItem = Math.min(this.page * this.limit, this.total);
       });
   }
+  irAPagina(pagina: number) {
+    if (pagina < 1 || pagina > this.totalPages) return;
+
+    this.page = pagina;
+    this.buscarEstudiantes();
+  }
+  cambiarLimit(event: any) {
+    this.limit = Number(event.target.value);
+    this.page = 1;
+    this.buscarEstudiantes();
+  }
+
   // limpiar toda la data de los filtros
   filtrosLimpiar() {
     this.filtros = '';
