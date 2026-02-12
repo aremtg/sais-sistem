@@ -125,19 +125,14 @@
               <span *ngIf="!students.usuario[0].createbyuser?.createbyuser">Sin fecha registrado</span>
               <span *ngIf="students.usuario[0].createbyuser?.createbyuser">{{ students.usuario[0].createbyuser?.createbyuser | date:'dd-MM-yyyy' }}</span>
             </td>
-
-            <td *ngIf="students.usuario[0].updatebyuser?.updatebyuser"  class="p-3">
-              <span *ngIf="!students.usuario[0].updatebyuser?.updatebyuser">Sin usuario registrado</span>
-              <span *ngIf="students.usuario[0].updatebyuser?.updatebyuser">{{ students.usuario[0].updatebyuser?.updatebyuser | date:'dd-MM-yyyy' }}</span>
+            <td *ngIf="students.usuario[0].updatebyuser?.nombre"  class="p-3">
+              <span *ngIf="!students.usuario[0].updatebyuser?.nombre">Sin usuario registrado</span>
+              <span *ngIf="students.usuario[0].updatebyuser?.nombre">{{ students.usuario[0].updatebyuser?.nombre}}</span>
             </td>
             <td *ngIf="students.usuario[0].deletebyuser?.deletebyuser"  class="p-3">
               <span *ngIf="!students.usuario[0].deletebyuser?.deletebyuser">Sin usuario registrado</span>
               <span *ngIf="students.usuario[0].deletebyuser?.deletebyuser">{{ students.usuario[0].deletebyuser?.deletebyuser | date:'dd-MM-yyyy' }}</span>
             </td>
-
-
-
-
             <td class="p-3 flex justify-center gap-4 ">
               <button (click)="ver( students)"  matTooltip="Ver" class="hover:text-purple-600" >
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
