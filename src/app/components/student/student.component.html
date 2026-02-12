@@ -92,6 +92,7 @@
             <th class="p-3">Email</th>
             <th class="p-3">Curso</th>
             <th class="p-3">Profesor</th>
+            <th class="p-3">Usuario</th>
             <th class="p-3 text-center">Acciones</th>
           </tr>
         </thead>
@@ -111,6 +112,8 @@
               <span *ngIf="!students.teacher || students.teacher === 0">Sin registrar profesor</span>
               <span *ngIf="students.teacher && students.teacher > 0">{{ students.teacher }}</span>
             </td>
+            <td class="p-3">{{ students.usuario[0]}}</td>
+
 
             <td class="p-3 flex justify-center gap-4 ">
               <button (click)="ver( students)"  matTooltip="Ver" class="hover:text-purple-600" >
