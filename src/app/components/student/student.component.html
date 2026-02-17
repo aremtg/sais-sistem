@@ -132,9 +132,9 @@
               <span *ngIf="!students.usuario[0].updatebyuser?.nombre">Sin usuario registrado</span>
               <span *ngIf="students.usuario[0].updatebyuser?.nombre">{{ students.usuario[0].updatebyuser?.nombre}}</span>
             </td>
-            <td *ngIf="students.usuario && students.usuario[0] && students.usuario[0].createbyuser?.createbyuser"  class="p-3">
-              <span *ngIf="!students.usuario[0].createbyuser?.createbyuser">Sin fecha creado</span>
-              <span *ngIf="students.usuario[0].createbyuser?.createbyuser">{{ students.usuario[0].createbyuser?.createbyuser | date:'dd-MM-yyyy' }}</span>
+            <td *ngIf="students.usuario && students.usuario[0] && students.usuario[0].updatebyuser?.updatebyuser"  class="p-3">
+              <span *ngIf="!students.usuario[0].updatebyuser?.updatebyuser">Sin fecha actualizado</span>
+              <span *ngIf="students.usuario[0].updatebyuser?.updatebyuser">{{ students.usuario[0].updatebyuser?.updatebyuser | date:'dd-MM-yyyy' }}</span>
             </td>
 
             <td class="p-3 flex justify-center gap-4 ">
