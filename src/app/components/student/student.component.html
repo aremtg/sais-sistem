@@ -97,7 +97,7 @@
             <th class="p-3">Usuario sistema</th>
             <th class="p-3">fecha actualizacion</th>
             <th class="p-3">Usuario sistema</th>
-            <th class="p-3">fecha eliminacion</th>
+            <!-- <th class="p-3">fecha eliminacion</th> -->
 
             <th class="p-3 text-center">Acciones</th>
           </tr>
@@ -138,11 +138,11 @@
             </td>
             <!-- usuario de eliminacion -->
             <td *ngIf="students.usuario && students.usuario[2] && students.usuario[2].deletebyuser?.nombre" class="p-3">
-            <span *ngIf="!students.usuario[2].deletebyuser?.nombre">Sin usuario registrado</span>
+            <span *ngIf="!students.usuario[2].deletebyuser?.nombre">Sin usuario eliminado</span>
             <span *ngIf="students.usuario[2].deletebyuser?.nombre">{{ students.usuario[2].deletebyuser?.nombre}}</span>
           </td>
           <td *ngIf="students.usuario && students.usuario[2] && students.usuario[2].deletebyuser?.deletebyuser"  class="p-3">
-            <span *ngIf="students.usuario[2].deletebyuser?.deletebyuser">Sin fecha eliminado</span>
+            <span *ngIf="!students.usuario[2].deletebyuser?.deletebyuser">Sin fecha eliminado</span>
             <span *ngIf="students.usuario[2].deletebyuser?.deletebyuser">{{ students.usuario[2].deletebyuser?.deletebyuser | date:'dd-MM-yyyy' }}</span>
           </td>
 
