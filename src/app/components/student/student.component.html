@@ -117,7 +117,7 @@
               </ng-template>
             </td>
             <td class="p-3">
-              <span *ngIf="students.teacher_id && students.teacher === 0; else sinTeacher">{{students.teacher}}</span>
+              <span *ngIf="students.teacher_id && students.teacher === null ; else sinTeacher">{{students.teacher}}</span>
               <ng-template #sinTeacher>
                 <span class="text-red-500">Sin profesor registrado</span>
               </ng-template>
