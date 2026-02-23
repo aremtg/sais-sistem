@@ -111,7 +111,7 @@ export class StudentComponent implements OnInit {
   register() {
     // Abrir un diálogo para registrar un nuevo estudiante
     const dialogRef = this.dialog.open(RegisterStudentsComponent, {
-      disableClose: true
+      disableClose: true,
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -148,7 +148,7 @@ export class StudentComponent implements OnInit {
 
     const DialogRef = this.dialog.open(DeleteDialogComponent, {
       data: students,
-      disableClose: true
+      disableClose: true,
     });
     DialogRef.afterClosed().subscribe(resp => {
       if (resp?.success) {
