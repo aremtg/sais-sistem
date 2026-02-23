@@ -21,6 +21,7 @@ export class TeacherComponent {
 
   constructor(private teacherService: TecaherService , private snackbar: MatSnackBar , private dialog : MatDialog) { }
 
+
 register(){
   const dialogRef = this.dialog.open(RegisterteacherComponent, {
     disableClose: true,

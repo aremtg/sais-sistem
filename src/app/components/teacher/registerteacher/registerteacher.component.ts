@@ -6,6 +6,7 @@ import { TecaherService } from '../service/tecaher.service';
 import { MatDialogRef, MatDialogTitle, MatDialogActions, MatDialogContent } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { Profesion, SubProfesion } from '../enum/profesiones.enum';
 
 @Component({
   selector: 'app-registerteacher',
@@ -15,6 +16,10 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class RegisterteacherComponent {
   registerTeacher : FormGroup;
+  profesiones = Object.values(Profesion);
+  ramaprofesiones = Object.values(SubProfesion);
+  selectedRama: SubProfesion | string = '';
+  SubProfesion = SubProfesion;
   constructor( private tecaherService : TecaherService ,
     private dialog : MatDialogRef<RegisterteacherComponent> ,
     private fb : FormBuilder ,
@@ -50,4 +55,12 @@ export class RegisterteacherComponent {
         }
       });
     }
+    onRamaChange(event: any) {
+    const value = event.target.value;
+    this.selectedRama = value;
+
+    if (value === SubProfesion.OTROS) {
+      this.registerTeacher.patchValue({ rama: '' });
+    }
+  }
 }

@@ -23,12 +23,40 @@
           <input type="text" formControlName="apellido" class="w-full p-2 border rounded">
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Profesión</label>
-          <input type="text" formControlName="profesion" class="w-full p-2 border rounded">
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            <span *ngIf="selectedRama !== SubProfesion.OTROS; else otrosLabel">
+              Selecciona la subprofesión
+            </span>
+            <ng-template #otrosLabel>
+              Especifica tu subprofesión
+            </ng-template>
+          </label>
+          <select formControlName="profesion" class="w-full p-2 border rounded">
+            <option value="" disabled selected>Seleccione una profesión</option>
+            <option *ngFor="let profesion of profesiones" [value]="profesion">{{ profesion }}</option>
+          </select>
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Rama</label>
-          <input type="text" formControlName="rama" class="w-full p-2 border rounded">
+          <!-- Select con su label -->
+          <div *ngIf="selectedRama !== SubProfesion.OTROS; else otros">
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Selecciona la subprofesión
+            </label>
+            <select (change)="onRamaChange($event)" formControlName="rama" class="w-full p-2 border rounded">
+              <option value="" disabled selected>Seleccione una rama</option>
+              <option class="overflow-x-auto" *ngFor="let rama of ramaprofesiones" [value]="rama">
+                {{ rama }}
+              </option>
+            </select>
+          </div>
+          <!-- Template para otros con su label -->
+          <ng-template #otros>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              Ingrese la subprofesión
+            </label>
+            <input type="text" formControlName="rama" class="w-full p-2 border rounded"
+              placeholder="Ingrese la rama de la profesión">
+          </ng-template>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Jornada</label>
