@@ -32,7 +32,7 @@
           <label class="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
           <input type="text" formControlName="apellido" class="w-full p-2 border rounded">
         </div>
-        <div>
+        <div class="col-span-2">
           <label class="block text-sm font-medium text-gray-700 mb-1">
             <span *ngIf="selectedRama !== SubProfesion.OTROS; else otrosLabel">
               Selecciona la subprofesión
@@ -46,7 +46,7 @@
             <option *ngFor="let profesion of profesiones" [value]="profesion">{{ profesion }}</option>
           </select>
         </div>
-        <div>
+        <div class="col-span-2">
           <div *ngIf="selectedRama !== SubProfesion.OTROS; else otros">
             <label class="block text-sm font-medium text-gray-700 mb-1">
               Selecciona la subprofesión
@@ -72,12 +72,12 @@
           <input type="text" formControlName="jornada" class="w-full p-2 border rounded">
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input type="email" formControlName="email" class="w-full p-2 border rounded">
-        </div>
-        <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
           <input type="tel" formControlName="telefono" class="w-full p-2 border rounded">
+        </div>
+        <div class="col-span-2">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+          <input type="email" formControlName="email" class="w-full p-2 border rounded">
         </div>
       </div>
       <!-- Botones de acción -->
