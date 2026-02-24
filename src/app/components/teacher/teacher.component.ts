@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TecaherService } from './service/tecaher.service';
 import { DialogModule } from '@angular/cdk/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterteacherComponent } from './registerteacher/registerteacher.component';
+import { EstudentsService } from '../student/service/estudiantes.service';
+import { Curso } from '../student/interface/sutdents.interface';
 
 @Component({
   selector: 'app-teacher',
@@ -17,9 +19,22 @@ import { RegisterteacherComponent } from './registerteacher/registerteacher.comp
   templateUrl: './teacher.component.html',
   styleUrl: './teacher.component.scss'
 })
-export class TeacherComponent {
+export class TeacherComponent implements OnInit {
+  cursos: Curso[] = [];
+  cursoseleccionado : string = '';
 
-  constructor(private teacherService: TecaherService , private snackbar: MatSnackBar , private dialog : MatDialog) { }
+  constructor(
+    private teacherService: TecaherService ,
+    private snackbar: MatSnackBar ,
+    private dialog : MatDialog ,
+    private servicestudent : EstudentsService
+  ) { }
+  ngOnInit(): void {
+    this.servicestudent.listadocursos().subscribe( data => {
+      this.cursos = data.cursos;
+    });
+
+  }
 
 
 register(){

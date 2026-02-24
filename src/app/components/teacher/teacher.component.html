@@ -36,16 +36,17 @@
           </div>
         </div>
         <!-- Profesor -->
-        <div class="w-full md:w-1/4">
+         <div class="w-full md:w-1/4">
           <label class="block text-sm font-medium text-gray-700 mb-1">
-            Cursos
+            Curso
           </label>
-          <select class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
-               bg-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600"
-            matTooltip="selecciona un profesor">
-            <option value="">Todos Cursos</option>
-            <option value="prof1">Juan Pérez</option>
-            <option value="prof2">Ana Gómez</option>
+          <select   class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
+                     bg-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600"
+            matTooltip="seleciona un curso">
+            <option disabled value="">Todos los Cursos</option>
+            <option *ngFor="let curso of cursos" [value]="curso.id">
+              {{curso.codigo}} - {{curso.nombreCurso}}
+            </option>
           </select>
         </div>
 
