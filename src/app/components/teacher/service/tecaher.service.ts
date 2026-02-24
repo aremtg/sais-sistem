@@ -13,7 +13,7 @@ export class TecaherService {
   constructor( private http: HttpClient , private catchError: CatchError) { }
 
   createTeacher(create  :  CreateTeacher){
-    return this.http.post<CreateTeacher>(`${this.api}/teacher/register`, create).pipe(
+    return this.http.post<CreateTeacher>(`${this.api}teacher/register`, create).pipe(
       catchError(error => this.catchError.handleError(error))
     );
   }

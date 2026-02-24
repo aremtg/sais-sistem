@@ -34,12 +34,9 @@
         </div>
         <div class="col-span-2">
           <label class="block text-sm font-medium text-gray-700 mb-1">
-            <span *ngIf="selectedRama !== SubProfesion.OTROS; else otrosLabel">
-              Selecciona la subprofesión
+            <span>
+              Selecciona Profesión
             </span>
-            <ng-template #otrosLabel>
-              Especifica tu subprofesión
-            </ng-template>
           </label>
           <select formControlName="profesion" class="w-full p-2 border rounded">
             <option value="" disabled selected>Seleccione una profesión</option>
