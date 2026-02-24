@@ -17,51 +17,55 @@ import { catchError, of } from 'rxjs';
 @Component({
   selector: 'app-teacher',
   standalone: true,
-  imports: [ DialogModule  , MatButtonModule , ReactiveFormsModule , CommonModule , MatTooltipModule , MatIconModule , FormsModule],
+  imports: [DialogModule, MatButtonModule, ReactiveFormsModule, CommonModule, MatTooltipModule, MatIconModule, FormsModule],
   templateUrl: './teacher.component.html',
   styleUrl: './teacher.component.scss'
 })
 export class TeacherComponent implements OnInit {
   cursos: Curso[] = [];
-  cursoseleccionado : string = '';
-  profesor : Teacher[] = [];
+  cursoseleccionado: string = '';
+  profesor: Teacher[] = [];
   filtros: string = '';
-  page : number = 1;
+  page: number = 1;
   limit: number = 10;
-  total : number = 0;
+  total: number = 0;
   totalPages: number = 0;
   startItem: number = 0;
   endItem: number = 0;
 
 
   constructor(
-    private teacherService: TecaherService ,
-    private snackbar: MatSnackBar ,
-    private dialog : MatDialog ,
-    private servicestudent : EstudentsService
+    private teacherService: TecaherService,
+    private snackbar: MatSnackBar,
+    private dialog: MatDialog,
+    private servicestudent: EstudentsService
   ) { }
   ngOnInit(): void {
     this.buscarprofesores();
-    this.servicestudent.listadocursos().subscribe( data => {
+    this.servicestudent.listadocursos().subscribe(data => {
       this.cursos = data.cursos;
     });
 
   }
   buscarprofesores() {
-    let filtro : TablasFiltroProfesores ={
-      nombre : '',
+    let filtro: TablasFiltroProfesores = {
+      nombre: '',
       cedula: '',
       curso_id: '',
       page: this.page,
       limit: this.limit
     };
-    if ( this.filtros && this.filtros.trim() !== '') {
-      const terminoBusqueda = this.filtros.trim().toLowerCase();
-      filtro.nombre = terminoBusqueda;
-    }
+
     if (this.filtros && this.filtros.trim() !== '') {
+      filtro.nombre = this.filtros.trim().toLowerCase();
       const terminoBusqueda = this.filtros.trim().toLowerCase();
-      filtro.cedula = terminoBusqueda;
+      if (/^\d+$/.test(terminoBusqueda)) {
+        filtro.cedula = terminoBusqueda;
+        filtro.nombre = '';
+      } else {
+        filtro.nombre = terminoBusqueda;
+        filtro.cedula = '';
+      }
     }
     if (this.cursoseleccionado && this.cursoseleccionado.trim() !== '') {
       filtro.curso_id = this.cursoseleccionado;
@@ -73,7 +77,7 @@ export class TeacherComponent implements OnInit {
         });
         return of({ message: '', teachers: [], total: 0, limit: 10, page: 1 });
       })
-    ).subscribe( data => {
+    ).subscribe(data => {
       this.profesor = data.teachers;
       this.total = data.total;
       this.limit = data.limit;
@@ -103,18 +107,18 @@ export class TeacherComponent implements OnInit {
   }
 
 
-register(){
-  const dialogRef = this.dialog.open(RegisterteacherComponent, {
-    disableClose: true,
-  });
-  dialogRef.afterClosed().subscribe(result => {
-    if (result) {
-      this.snackbar.open(result.message, 'Cerrar', {
-        duration: 3000,
-      });
-    }
-    // acciones de tabla
-  });
-}
+  register() {
+    const dialogRef = this.dialog.open(RegisterteacherComponent, {
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.snackbar.open(result.message, 'Cerrar', {
+          duration: 3000,
+        });
+      }
+      // acciones de tabla
+    });
+  }
 
 }

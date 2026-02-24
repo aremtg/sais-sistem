@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CreateTeacher, TablasdeProfesores, TablasFiltroProfesores } from '../interface/teacher.interface';
 import { environment } from '../../../../enviroments/api-local';
-import { catchError } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { CatchError } from './../../../shared/error/catchError';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class TecaherService {
   }
 
   // lista de profesores
-   getTeachers(filtros :  TablasFiltroProfesores ) {
+   getTeachers(filtros :  TablasFiltroProfesores ) : Observable<TablasdeProfesores> {
       let params =  new HttpParams();
      Object.entries(filtros).forEach(([key, values]) => {
         if (values === undefined && values === null) { return; }
