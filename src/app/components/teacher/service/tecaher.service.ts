@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CreateTeacher } from '../interface/teacher.interface';
+import { CreateTeacher, TablasdeProfesores, TablasFiltroProfesores } from '../interface/teacher.interface';
 import { environment } from '../../../../enviroments/api-local';
 import { catchError } from 'rxjs';
 import { CatchError } from './../../../shared/error/catchError';
@@ -19,4 +19,19 @@ export class TecaherService {
   }
 
   // lista de profesores
+   getTeachers(filtros :  TablasFiltroProfesores ) {
+      let params =  new HttpParams();
+     Object.entries(filtros).forEach(([key, values]) => {
+        if (values === undefined && values === null) { return; }
+        if (typeof values === 'string' && values.trim() && values !== '') {
+          params = params.set(key, values.toString());
+        }
+        if (typeof values === 'number') {
+          params = params.set(key, values.toString());
+        }
+      });
+      return this.http.get<TablasdeProfesores>(`${this.api}teacher/tablas`, { params: params }).pipe(
+        catchError(error => this.catchError.handleError(error))
+      );
+    }
 }
