@@ -1,0 +1,48 @@
+<div class="bg-white rounded shadow-md poppins-medium p-6 w-full max-w-4xl">
+  <!-- Título del diálogo -->
+  <div mat-dialog-title class="flex items-center justify-between mb-4">
+    <div>
+      <h2 class="text-xl font-semibold">Cursos Registrados en la institucion</h2>
+      <p class="text-sm opacity-50 text-gray-400 mt-1">
+        Ver los cursos asignados del profesor {{ data.nombre }} {{ data.apellido }}
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Contenido del diálogo -->
+  <div mat-dialog-content class="w-full">
+    <!-- Verificar si hay cursos -->
+    <div *ngIf="data.cursos && data.cursos.length > 0; else sinCursos">
+      <table class="w-full text-sm text-left">
+        <thead class="bg-gray-100 text-gray-700">
+          <tr>
+            <th class="p-3">Código</th>
+            <th class="p-3">Nombre del Curso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let curso of data.cursos" class="border-t hover:bg-gray-50">
+            <td class="p-3">{{ curso.codigo }}</td>
+            <td class="p-3">{{ curso.nombreCurso }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Template sin cursos -->
+    <ng-template #sinCursos>
+      <div class="text-center py-8 text-gray-500">
+        <p>No hay cursos asignados a este profesor</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="mt-6 flex justify-end">
+    <button mat-dialog-close
+      class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-red-600 hover:bg-gray-300 transition">
+      Cerrar
+    </button>
+  </div>
+</div>

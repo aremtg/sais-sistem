@@ -13,6 +13,8 @@ import { EstudentsService } from '../student/service/estudiantes.service';
 import { Curso } from '../student/interface/sutdents.interface';
 import { TablasFiltroProfesores, Teacher } from './interface/teacher.interface';
 import { catchError, of } from 'rxjs';
+import { VercursosComponent } from './vercursos/vercursos.component';
+import { VerstudentsComponent } from './verstudents/verstudents.component';
 
 @Component({
   selector: 'app-teacher',
@@ -32,8 +34,6 @@ export class TeacherComponent implements OnInit {
   totalPages: number = 0;
   startItem: number = 0;
   endItem: number = 0;
-
-
   constructor(
     private teacherService: TecaherService,
     private snackbar: MatSnackBar,
@@ -46,6 +46,34 @@ export class TeacherComponent implements OnInit {
       this.cursos = data.cursos;
     });
 
+  }
+  vercurso( data : Teacher) {
+    const dialogRef = this.dialog.open(VercursosComponent, {
+      data : data,
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.snackbar.open(result.message, 'Cerrar', {
+          duration: 3000,
+        });
+      }
+
+    });
+  }
+  veralumon( data : Teacher) {
+    const dialogRef = this.dialog.open(VerstudentsComponent, {
+      data : data,
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.snackbar.open(result.message, 'Cerrar', {
+          duration: 3000,
+        });
+      }
+
+    });
   }
   buscarprofesores() {
     let filtro: TablasFiltroProfesores = {
