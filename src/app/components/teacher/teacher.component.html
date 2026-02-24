@@ -74,8 +74,8 @@
             <th class="p-3">Jornada</th>
             <th class="p-3">Teléfono</th>
             <th class="p-3">Email</th>
-            <!-- <th class="p-3">Alumnos</th> -->
-            <!-- <th class="p-3">Cursos</th> -->
+            <th class="p-3">Cursos</th>
+            <th class="p-3">Alumnos</th>
             <th class="p-3 text-center">Acciones</th>
           </tr>
         </thead>
@@ -90,6 +90,19 @@
             <td class="p-3">{{profe.jornada}}</td>
             <td class="p-3">{{profe.telefono}}</td>
             <td class="p-3">{{profe.email}}</td>
+            <td class="p-3" *ngIf="profe.cursos && profe.cursos.length > 0 ; else sinCursos">
+              {{ profe.cursos.length }} -  <mat-icon class="mat-18">eye</mat-icon>
+            </td>
+            <ng-template #sinCursos>
+              <td class="p-3 text-center text-red-500">Sin cursos</td>
+            </ng-template>
+            <td class="p-3" *ngIf="profe.students && profe.students.length > 0 ; else sinAlumnos">
+              {{ profe.students.length }}
+            </td>
+            <ng-template #sinAlumnos>
+              <td class="p-3 text-center text-red-500">Sin alumnos</td>
+            </ng-template>
+
             <!-- <td class="p-3">Curso 1</td> -->
             <!-- <td class="p-3">Ana Gómez</td> -->
 

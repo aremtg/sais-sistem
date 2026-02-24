@@ -17,7 +17,7 @@ import { catchError, of } from 'rxjs';
 @Component({
   selector: 'app-teacher',
   standalone: true,
-  imports: [DialogModule, MatButtonModule, ReactiveFormsModule, CommonModule, MatTooltipModule, MatIconModule, FormsModule],
+  imports: [DialogModule, MatButtonModule, ReactiveFormsModule, CommonModule, MatTooltipModule, MatIconModule, FormsModule , MatIconModule],
   templateUrl: './teacher.component.html',
   styleUrl: './teacher.component.scss'
 })
@@ -55,7 +55,7 @@ export class TeacherComponent implements OnInit {
       page: this.page,
       limit: this.limit
     };
-
+// para validar el filtro de busqueda por nombre o cedula
     if (this.filtros && this.filtros.trim() !== '') {
       filtro.nombre = this.filtros.trim().toLowerCase();
       const terminoBusqueda = this.filtros.trim().toLowerCase();
