@@ -11,6 +11,16 @@
     <form [formGroup]="registerTeacher" mat-dialog-content class="space-y-6 p-4">
       <div class="flex flex-col md:grid md:grid-cols-2 gap-4">
         <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Tipo de Identificación</label>
+          <select  class="w-full p-2 border rounded">
+            <option value="" disabled selected>Seleccione un tipo de identificación</option>
+            <option value="CC">Cédula de Ciudadanía</option>
+            <option value="CE">Cédula de Extranjería</option>
+            <option value="TI">Tarjeta de Identidad</option>
+            <option value="PP">Pasaporte</option>
+          </select>
+        </div>
+        <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Cédula</label>
           <input type="text" formControlName="cedula" class="w-full p-2 border rounded">
         </div>
@@ -37,7 +47,6 @@
           </select>
         </div>
         <div>
-          <!-- Select con su label -->
           <div *ngIf="selectedRama !== SubProfesion.OTROS; else otros">
             <label class="block text-sm font-medium text-gray-700 mb-1">
               Selecciona la subprofesión
