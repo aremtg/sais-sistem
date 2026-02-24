@@ -69,7 +69,10 @@
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Jornada</label>
-          <input type="text" formControlName="jornada" class="w-full p-2 border rounded">
+          <select formControlName="jornada" class="w-full p-2 border rounded">
+            <option value="" disabled selected>Seleccione una jornada</option>
+            <option *ngFor="let jornada of jornada" [value]="jornada">{{ jornada }}</option>
+          </select>
         </div>
         <div>
           <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>

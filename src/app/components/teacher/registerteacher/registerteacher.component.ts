@@ -7,6 +7,7 @@ import { MatDialogRef, MatDialogTitle, MatDialogActions, MatDialogContent } from
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { Profesion, SubProfesion } from '../enum/profesiones.enum';
+import { Jornada } from '../enum/jornada.enum';
 
 @Component({
   selector: 'app-registerteacher',
@@ -18,6 +19,7 @@ export class RegisterteacherComponent {
   registerTeacher : FormGroup;
   profesiones = Object.values(Profesion);
   ramaprofesiones = Object.values(SubProfesion);
+  jornada = Object.values(Jornada);
   selectedRama: SubProfesion | string = '';
   SubProfesion = SubProfesion;
   constructor( private tecaherService : TecaherService ,
