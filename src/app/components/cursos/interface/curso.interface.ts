@@ -27,3 +27,4 @@ export interface Teacher {
   email:     string;
   telefono:  string;
 }
+//  tablas de cursos
