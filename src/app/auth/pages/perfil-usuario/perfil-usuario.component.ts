@@ -6,8 +6,11 @@ import {CloudinaryModule} from '@cloudinary/ng';
 import { Cloudinary , CloudinaryImage } from '@cloudinary/url-gen';
 import { AuthService } from '../../service/authService.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {  PerfilUsers, Usuario } from '../../interface/login.interface';
+import { PerfilUsers, Usuario } from '../../interface/login.interface';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { Dialog } from '@angular/cdk/dialog';
+import { EditperfilComponent } from '../editperfil/editperfil.component';
 @Component({
   selector: 'app-perfil-usuario',
   standalone: true,
@@ -30,6 +33,7 @@ export class PerfilUsuarioComponent implements OnInit {
   error :  string |null = null;
   constructor( private authlogin : AuthService ,
     private readonly snakbar : MatSnackBar ,
+     private dialog : MatDialog
   ){}
 
   ngOnInit(): void {
@@ -81,5 +85,11 @@ onFileSelected(event: Event) {
   });
 }
 
-
+ editar ( usuario : Usuario){
+  const dialogRef = this.dialog.open( EditperfilComponent ,{
+    data : {usuario},
+    disableClose : true,
+  })
+  dialogRef.afterClosed()
+ }
 }
