@@ -1,56 +1,82 @@
-<div class="max-w-5xl mx-auto bg-white rounded-md overflow-hidden shadow-md poppins-medium">
-  <!-- Portada -->
-  <div class="relative">
-    <div class="h-64 bg-purple-600"></div>
-
-    <!-- Foto de perfil -->
-    <div class="absolute -bottom-16 left-6">
-      <label class="relative block cursor-pointer" matTooltip="Cambiar de imagen">
-        <!-- Círculo de la foto -->
-        <div
-          class="w-36 h-36 rounded-full bg-gray-300 border-4 border-white flex items-center justify-center overflow-hidden">
-          <!-- Imagen de perfil -->
-          <img *ngIf="imagen; else cameraIcon" [src]="imagen" alt="Foto de perfil" class="w-full h-full object-cover" />
-
-          <!-- Ícono cámara -->
-          <ng-template #cameraIcon>
-            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#000000">
-              <path
-                d="M480-260q75 0 127.5-52.5T660-440q0-75-52.5-127.5T480-620q-75 0-127.5 52.5T300-440q0 75 52.5 127.5T480-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm320-240Z" />
-            </svg>
-          </ng-template>
+<main class="flex flex-1 justify-center py-10 px-4 lg:px-40">
+  <div class="layout-content-container flex flex-col max-w-[960px] flex-1 gap-6">
+    <!-- Profile Header Card -->
+    <div
+      class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+      <div class="h-32 bg-gradient-to-r from-purple-400 to-blue-700"></div>
+      <div class="px-8 pb-8 -mt-12 flex flex-col md:flex-row items-end gap-6">
+        <div class="relative">
+          <div
+            class="bg-slate-200 dark:bg-slate-700 bg-center bg-no-repeat aspect-square bg-cover rounded-2xl size-32 border-4 border-white dark:border-slate-900 shadow-md"
+            data-alt="Large professional portrait of Carlos Rodriguez"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2gDRON2pmkRsfISNYN7A8ZVo3cwzXRP_4DNjw0y09hdWix8P0T7ZdnYaMNyxh4PVWsZsrXMDwjCW4WV-xRH4qDXLLSH2Q5Xnoif_apaBVALQid5L5f51wbm2Oezx5Lil5MSUVCDfD4RoT14qmiZUKhOMVnvnG_Sf5yzqSduQTqIo1HRtefzn_O8YNnmOR3CXogPZyqH997Eu_etFiRvilC-guWKDsfY2Pn88OKvoGQJZ99YupineW4LPowfZhlfKH6x5T9m-Wppw");'>
+          </div>
+          <div
+            class="absolute bottom-2 right-2 size-6 bg-green-500 border-4 border-white dark:border-slate-900 rounded-full">
+          </div>
         </div>
-
-        <!-- Input oculto -->
-        <input type="file" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer"
-          (change)="onFileSelected($event)" />
-      </label>
+        <div class="flex-1 flex flex-col md:flex-row justify-between items-start md:items-center w-full">
+          <div class="space-y-1">
+            <div class="flex items-center gap-3">
+              <h1 class="text-2xl font-bold text-slate-900 dark:text-white">{{usuario}}</h1>
+              <span
+                class="px-2.5 py-0.5 rounded-full bg-blue-300 text-primary text-xs font-bold uppercase tracking-wider">{{role}}</span>
+            </div>
+            <p class="text-slate-500 dark:text-slate-400 font-medium">{{nombrecompleto}}
+            </p>
+          </div>
+          <div class="flex gap-3 mt-4 md:mt-0">
+            <button
+              class="flex items-center justify-center rounded-lg h-10 px-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              matTooltip="editar perfil">
+              <mat-icon class="mr-2">edit</mat-icon>
+              Editar Perfil
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Información principal -->
-  <div class="pt-10 px-6 pb-4 border-b">
-    <div class="flex justify-end items-center">
-      <div>
-        <h1 class="text-2xl font-bold">{{ nombrecompleto }}</h1>
-        <p class="text-gray-600">{{ role }}</p>
+    <!-- Tabs Navigation -->
+    <div class="flex border-b border-slate-200 dark:border-slate-800 gap-8 px-2">
+      <span>Datos Personales</span>
+    </div>
+    <!-- Main Grid Content -->
+    <div class="grid grid-cols-1 gap-6">
+      <!-- Account Details Section (Left Column) -->
+      <div class="lg:col-span-2 flex flex-col gap-6">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
+            <mat-icon class="text-blue-200">manage_accounts</mat-icon>
+            Informacion del Perfil
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-y-6 gap-x-8">
+            <div class="space-y-1.5">
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Nombre Completo</p>
+              <div
+                class="flex items-center gap-3 text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
+                <mat-icon class="mat-18">person</mat-icon>
+                <span class="font-medium">{{nombrecompleto}}</span>
+              </div>
+            </div>
+            <div class="space-y-1.5">
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Email</p>
+              <div
+                class="flex items-center gap-3 text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
+                <mat-icon class="mat-18">mail</mat-icon>
+                <span class="font-medium">{{email}}</span>
+              </div>
+            </div>
+            <div class="space-y-1.5">
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Ceduala de Identidad</p>
+              <div
+                class="flex items-center gap-3 text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
+                <mat-icon class="mat-18">badge</mat-icon>
+                <span class="font-medium">{{usuario}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- Contenido perfil -->
-  <div *ngIf="usuarios?.perfil" class="grid gap-4 p-4 bg-gray-100">
-    <div class="bg-white p-4 rounded shadow-md">
-      <span class="mb-2 flex items-center justify-center poppins-medium">
-        Información general
-      </span>
-      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Nombre: </strong>{{ usuarios?.perfil?.nombre }}</p>
-      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Apellido: </strong>{{ usuarios?.perfil?.apellido }}
-      </p>
-      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Cédula: </strong>{{ usuarios?.perfil?.cedula }}</p>
-      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Email: </strong>{{ usuarios?.perfil?.email }}</p>
-      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Role: </strong>{{ usuarios?.perfil?.role }}</p>
-    </div>
-  </div>
-
-</div>
+</main>

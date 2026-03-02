@@ -7,12 +7,13 @@ import { Cloudinary , CloudinaryImage } from '@cloudinary/url-gen';
 import { AuthService } from '../../service/authService.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {  PerfilUsers, Usuario } from '../../interface/login.interface';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-perfil-usuario',
   standalone: true,
   imports: [ MatTooltipModule , CommonModule ,
      ReactiveFormsModule , FormsModule ,
-      CloudinaryModule
+      CloudinaryModule , MatIconModule
     ],
   templateUrl: './perfil-usuario.component.html',
   styleUrl: './perfil-usuario.component.scss'
@@ -23,6 +24,7 @@ export class PerfilUsuarioComponent implements OnInit {
   role = '';
   imagen = '';
   usuario = '';
+  email = '';
   selectFile : File | null = null;
   usuarios: PerfilUsers | null = null;
   error :  string |null = null;
@@ -38,6 +40,7 @@ export class PerfilUsuarioComponent implements OnInit {
       this.role = local.getItem('role') || '';
       this.imagen = local.getItem('imagen') || '';
       this.usuario = local.getItem('usuario') || '';
+      this.email = local.getItem('email') || '';
     }
     this.authlogin.profile().subscribe({
       next : (data   )=> {

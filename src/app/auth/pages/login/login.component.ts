@@ -37,6 +37,7 @@ export class LoginComponent {
           sessionStorage.setItem('token', resp.token.token);
           sessionStorage.setItem('role', resp.usuario.role);
           sessionStorage.setItem('usuario', resp.usuario.cedula);
+          sessionStorage.setItem('email', resp.usuario.email);
           sessionStorage.setItem('refreshToken', resp.token.refreshToken);
           sessionStorage.setItem('imagen', resp.usuario.imagen ? resp.usuario.imagen : 'no hay imagen');
           sessionStorage.setItem(`nombrecompleto`,`${resp.usuario.nombre} ${resp.usuario.apellido}`);
