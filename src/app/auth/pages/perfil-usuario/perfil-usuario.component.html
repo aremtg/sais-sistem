@@ -1,51 +1,29 @@
-<div
-  class="max-w-5xl mx-auto bg-white rounded-md overflow-hidden shadow-md poppins-medium"
->
+<div class="max-w-5xl mx-auto bg-white rounded-md overflow-hidden shadow-md poppins-medium">
   <!-- Portada -->
   <div class="relative">
     <div class="h-64 bg-purple-600"></div>
 
     <!-- Foto de perfil -->
     <div class="absolute -bottom-16 left-6">
-      <label
-        class="relative block cursor-pointer"
-        matTooltip="Cambiar de imagen"
-      >
+      <label class="relative block cursor-pointer" matTooltip="Cambiar de imagen">
         <!-- Círculo de la foto -->
         <div
-          class="w-36 h-36 rounded-full bg-gray-300 border-4 border-white flex items-center justify-center overflow-hidden"
-        >
+          class="w-36 h-36 rounded-full bg-gray-300 border-4 border-white flex items-center justify-center overflow-hidden">
           <!-- Imagen de perfil -->
-          <img
-            *ngIf="imagen; else cameraIcon"
-            [src]="imagen"
-            alt="Foto de perfil"
-            class="w-full h-full object-cover"
-          />
+          <img *ngIf="imagen; else cameraIcon" [src]="imagen" alt="Foto de perfil" class="w-full h-full object-cover" />
 
           <!-- Ícono cámara -->
           <ng-template #cameraIcon>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="54px"
-              viewBox="0 -960 960 960"
-              width="54px"
-              fill="#000000"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" height="54px" viewBox="0 -960 960 960" width="54px" fill="#000000">
               <path
-                d="M480-260q75 0 127.5-52.5T660-440q0-75-52.5-127.5T480-620q-75 0-127.5 52.5T300-440q0 75 52.5 127.5T480-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm320-240Z"
-              />
+                d="M480-260q75 0 127.5-52.5T660-440q0-75-52.5-127.5T480-620q-75 0-127.5 52.5T300-440q0 75 52.5 127.5T480-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm320-240Z" />
             </svg>
           </ng-template>
         </div>
 
         <!-- Input oculto -->
-        <input
-          type="file"
-          accept="image/*"
-          class="absolute inset-0 opacity-0 cursor-pointer"
-          (change)="onFileSelected($event)"
-        />
+        <input type="file" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer"
+          (change)="onFileSelected($event)" />
       </label>
     </div>
   </div>
@@ -61,17 +39,18 @@
   </div>
 
   <!-- Contenido perfil -->
-<div *ngIf="usuarios?.perfil" class="grid gap-4 p-4 bg-gray-100">
-  <div class="bg-white p-4 rounded shadow-md">
-    <span class="mb-2 flex items-center justify-center poppins-medium">
-      Información general
-    </span>
-    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Nombre: </strong>{{ usuarios?.perfil?.nombre }}</p>
-    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Apellido: </strong>{{ usuarios?.perfil?.apellido }}</p>
-    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Cédula: </strong>{{ usuarios?.perfil?.cedula }}</p>
-    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Email: </strong>{{ usuarios?.perfil?.email }}</p>
-    <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Role: </strong>{{ usuarios?.perfil?.role }}</p>
+  <div *ngIf="usuarios?.perfil" class="grid gap-4 p-4 bg-gray-100">
+    <div class="bg-white p-4 rounded shadow-md">
+      <span class="mb-2 flex items-center justify-center poppins-medium">
+        Información general
+      </span>
+      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Nombre: </strong>{{ usuarios?.perfil?.nombre }}</p>
+      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Apellido: </strong>{{ usuarios?.perfil?.apellido }}
+      </p>
+      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Cédula: </strong>{{ usuarios?.perfil?.cedula }}</p>
+      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Email: </strong>{{ usuarios?.perfil?.email }}</p>
+      <p class="text-sm text-gray-700"><strong class="p-1 text-sm">Role: </strong>{{ usuarios?.perfil?.role }}</p>
+    </div>
   </div>
-</div>
 
 </div>
