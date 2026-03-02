@@ -3,20 +3,19 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { CommonModule} from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CloudinaryModule} from '@cloudinary/ng';
-import { Cloudinary , CloudinaryImage } from '@cloudinary/url-gen';
 import { AuthService } from '../../service/authService.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { PerfilUsers, Usuario } from '../../interface/login.interface';
+import { PerfilUsers, Usuario, Perfil } from '../../interface/login.interface';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
-import { Dialog } from '@angular/cdk/dialog';
+import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { EditperfilComponent } from '../editperfil/editperfil.component';
 @Component({
   selector: 'app-perfil-usuario',
   standalone: true,
   imports: [ MatTooltipModule , CommonModule ,
      ReactiveFormsModule , FormsModule ,
-      CloudinaryModule , MatIconModule
+      CloudinaryModule , MatIconModule , DialogModule
     ],
   templateUrl: './perfil-usuario.component.html',
   styleUrl: './perfil-usuario.component.scss'
@@ -28,6 +27,7 @@ export class PerfilUsuarioComponent implements OnInit {
   imagen = '';
   usuario = '';
   email = '';
+  perfil!: Perfil;
   selectFile : File | null = null;
   usuarios: PerfilUsers | null = null;
   error :  string |null = null;
@@ -85,9 +85,11 @@ onFileSelected(event: Event) {
   });
 }
 
- editar ( usuario : Usuario){
+ editar (
+  // perfil : Perfil
+){
   const dialogRef = this.dialog.open( EditperfilComponent ,{
-    data : {usuario},
+    // data : perfil,
     disableClose : true,
   })
   dialogRef.afterClosed()
