@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { CommonModule} from '@angular/common';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {CloudinaryModule} from '@cloudinary/ng';
 import { AuthService } from '../../service/authService.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,7 +9,6 @@ import { PerfilUsers, Usuario, Perfil } from '../../interface/login.interface';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
-import { EditperfilComponent } from '../editperfil/editperfil.component';
 @Component({
   selector: 'app-perfil-usuario',
   standalone: true,
@@ -22,6 +21,8 @@ import { EditperfilComponent } from '../editperfil/editperfil.component';
 })
 export class PerfilUsuarioComponent implements OnInit {
 
+  edit : FormGroup;
+  isedit : boolean = false;
   nombrecompleto = '';
   role = '';
   imagen = '';
@@ -33,8 +34,29 @@ export class PerfilUsuarioComponent implements OnInit {
   error :  string |null = null;
   constructor( private authlogin : AuthService ,
     private readonly snakbar : MatSnackBar ,
-     private dialog : MatDialog
-  ){}
+     private dialog : MatDialog , private fb : FormBuilder
+  ){
+    this.edit = this.fb.group({
+      nombre  : [{value : '' , disabled : true } , Validators.required],
+      apellido  : [{value : '' , disabled : true } , Validators.required],
+      cedula  : [{value : '' , disabled : true } , Validators.required],
+      email  : [{value : '' , disabled : true } , Validators.required],
+    })
+    this.authlogin.profile().subscribe({
+      next : (data)=> {
+       this.edit.patchValue({
+        nombre : data.perfil.nombre,
+        apellido : data.perfil.apellido,
+        cedula : data.perfil.cedula,
+        email : data.perfil.email
+       })
+        },
+      error: (err) => {
+        this.error = err.message;
+        this.usuarios =  null;
+      },
+    })
+  }
 
   ngOnInit(): void {
     const local =  window.sessionStorage || window.localStorage;
@@ -46,15 +68,7 @@ export class PerfilUsuarioComponent implements OnInit {
       this.usuario = local.getItem('usuario') || '';
       this.email = local.getItem('email') || '';
     }
-    this.authlogin.profile().subscribe({
-      next : (data   )=> {
-        this.usuarios = data;
-      },
-      error: (err) => {
-        this.error = err.message;
-        this.usuarios =  null;
-      },
-    })
+
   }
 onFileSelected(event: Event) {
   const input = event.target as HTMLInputElement;
@@ -85,13 +99,16 @@ onFileSelected(event: Event) {
   });
 }
 
- editar (
-  // perfil : Perfil
-){
-  const dialogRef = this.dialog.open( EditperfilComponent ,{
-    // data : perfil,
-    disableClose : true,
-  })
-  dialogRef.afterClosed()
- }
+activarEdicion() {
+  this.isedit = true;
+  this.edit.enable();
+}
+guardarCambios(){
+   if (this.edit.invalid) return;
+
+  const datos = this.edit.getRawValue();
+  console.log(datos);
+  this.edit.disable();
+  this.isedit = false;
+}
 }
