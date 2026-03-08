@@ -79,9 +79,11 @@ export interface Teacher {
   updatedAt: Date;
   deletedAt: null;
 }
+// filtros del curso
 export interface filtrosCursos {
   nombreCurso ?: string;
   codigo? :  string;
-  page : number;
+  teacher_id ?  : string;
+  pages : number;
   limit : number;
 }

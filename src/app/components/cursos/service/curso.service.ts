@@ -38,7 +38,7 @@ export class CursoService {
         params = params.set(key, values.toString());
       }
     });
-    return this.http.get<TablasCurso>(`${this.api}cursos/tablas` ,{ params : params}).pipe(catchError(error => this.catchError.handleError(error)));
+    return this.http.get<TablasCurso>(`${this.api}cursos/tablas` ,{ params : params}).pipe(catchError(error => this.catchError.handleError(error)))
   }
 
 
