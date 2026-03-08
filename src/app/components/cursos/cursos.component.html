@@ -42,9 +42,10 @@
           <select class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm
                bg-white focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-purple-600"
             matTooltip="selecciona un profesor">
-            <option value="">Todos</option>
-            <option value="prof1">Juan Pérez</option>
-            <option value="prof2">Ana Gómez</option>
+            <option value="">Todos los Docentes</option>
+            <option  *ngFor="let teachers of listaprofesores" [value]="teachers.id" >
+              {{teachers.cedula}} - {{teachers.nombre}}{{teachers.apellido}} - {{teachers.profesion}}
+            </option>
           </select>
         </div>
         <!-- Botones -->
