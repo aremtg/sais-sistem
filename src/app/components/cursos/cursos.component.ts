@@ -18,7 +18,9 @@ import { filtrosCursos, Teacher } from './interface/curso.interface';
 })
 export class CursosComponent implements OnInit {
   listaprofesores : Teacher[] = [];
-  selectionTeacher = '';
+  selectionTeacher :  string = '';
+  filtrosbuscar : string = '';
+
   page : number = 1;
   limit: number = 10;
   constructor( private dialog : MatDialog , private serviceCursos : CursoService){ }
@@ -32,10 +34,15 @@ export class CursosComponent implements OnInit {
   busquedaActiva(){
     let filtros : filtrosCursos = {
       nombreCurso : '',
-      codigo : 0,
+      codigo : '',
       page : this.page,
       limit : this.limit
-    }
+    };
+    if ( this.filtrosbuscar && this.filtrosbuscar.trim() !== '') {
+      const termino = this.filtrosbuscar.trim().toLowerCase();
+      filtros.nombreCurso = termino;
+    };
+    
   }
 
   registrocursos(){

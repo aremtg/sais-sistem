@@ -81,7 +81,7 @@ export interface Teacher {
 }
 export interface filtrosCursos {
   nombreCurso ?: string;
-  codigo? :  number;
+  codigo? :  string;
   page : number;
   limit : number;
 }
